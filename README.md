@@ -1,4 +1,3 @@
-```
 # OpenAI Java API Client for Models
 
 [![Build Status](https://travis-ci.com/pdkst/models.svg?branch=main)](https://travis-ci.com/pdkst/models)
@@ -41,4 +40,4 @@ If you encounter any issues or have any suggestions for improvements, please fee
 ## License
 
 This project is licensed under the Apache License 2.0. See the [LICENSE](https://github.com/pdkst/models/blob/main/LICENSE) file for more details.
-```
+
