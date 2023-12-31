@@ -1,6 +1,8 @@
 package io.github.pdkst.models.openai.client;
 
 import io.github.pdkst.models.http.HttpExchanger;
+import io.github.pdkst.models.http.clients.OkHttp3HttpExchanger;
+import io.github.pdkst.models.json.JacksonMapper;
 import io.github.pdkst.models.json.JsonMapper;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +16,9 @@ import lombok.Data;
 public class OpenaiConfig {
     @Builder.Default
     private String base = "https://api.openai.com";
-    private JsonMapper jsonMapper;
-    private HttpExchanger httpExchanger;
+    @Builder.Default
+    private JsonMapper jsonMapper = new JacksonMapper();
+    @Builder.Default
+    private HttpExchanger httpExchanger = new OkHttp3HttpExchanger();
     private OpenaiKeySelector keySelector;
 }
