@@ -1,6 +1,7 @@
 package io.github.pdkst.models.openai.client;
 
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.Delegate;
 
 /**
  * @author pdkst.zhang
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SingletonOpenaiKeySelector implements OpenaiKeySelector {
     private final String key;
+    @Delegate
     private final OpenaiUrlBuilder builder;
 
     public SingletonOpenaiKeySelector(String key) {
