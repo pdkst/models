@@ -17,15 +17,17 @@ public class OpenaiDelegateHttpExchanger implements HttpExchanger {
 
     @Override
     public HttpResponse exchange(HttpRequest request) throws Exception {
-        request.url(request.url());
-        request.header("Authorization", "Bearer " + openaiKeySelector.select());
+        final OpenaiKey openaiKey = openaiKeySelector.select(request.url());
+        request.url(openaiKey.getUrl());
+        request.header("Authorization", "Bearer " + openaiKey);
         return delegate.exchange(request);
     }
 
     @Override
     public void serverSideEvent(HttpRequest request, ServerSideEventListener listener) throws Exception {
-        request.url(request.url());
-        request.header("Authorization", "Bearer " + openaiKeySelector.select());
+        final OpenaiKey openaiKey = openaiKeySelector.select(request.url());
+        request.url(openaiKey.getUrl());
+        request.header("Authorization", "Bearer " + openaiKey);
         this.delegate.serverSideEvent(request, listener);
     }
 }

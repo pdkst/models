@@ -12,9 +12,13 @@ public interface OpenaiKeySelector {
      *
      * @return openai key
      */
-    String select();
+    OpenaiKey select(String path);
+
+    static OpenaiKeySelector singleton(String key, OpenaiUrlBuilder builder) {
+        return new SingletonOpenaiKeySelector(key, builder);
+    }
 
     static OpenaiKeySelector singleton(String key) {
-        return new SingletonOpenaiKeySelector(key);
+        return new SingletonOpenaiKeySelector(key, new OpenaiUrlBuilder());
     }
 }
