@@ -9,9 +9,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SingletonOpenaiKeySelector implements OpenaiKeySelector {
     private final String key;
+    private final OpenaiUrlBuilder builder;
+
+    public SingletonOpenaiKeySelector(String key) {
+        this.key = key;
+        this.builder = new OpenaiUrlBuilder();
+    }
 
     @Override
-    public String select() {
-        return key;
+    public OpenaiKey select(String api) {
+        return new OpenaiKey(key, builder.build(api));
     }
 }

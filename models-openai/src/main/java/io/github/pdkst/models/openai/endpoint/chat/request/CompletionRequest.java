@@ -20,13 +20,6 @@ import java.util.Map;
 @Data
 @NoArgsConstructor
 public class CompletionRequest extends Request {
-
-    /**
-     * A list of messages comprising the conversation so far.
-     * <a href="https://cookbook.openai.com/examples/how_to_format_inputs_to_chatgpt_models">Example Python code</a>.
-     */
-    @Required
-    private List<Message> messages;
     /**
      * ID of the model to use.
      * See the
@@ -37,14 +30,22 @@ public class CompletionRequest extends Request {
     private String model;
 
     /**
-     * Number between -2.0 and 2.0.
+     * If set, partial message deltas will be sent, like in ChatGPT.
+     * Tokens will be sent as data-only
+     * <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format">server-sent events</a> as they become available,
+     * with the stream terminated by a {@code data: [DONE]} message.
      * <p>
-     * Positive values penalize new tokens based on their existing frequency in the text so far,
-     * decreasing the model's likelihood to repeat the same line verbatim.
-     * </p>
-     * <p>Defaults to 0</p>
+     * <a href="https://cookbook.openai.com/examples/how_to_stream_completions">Example Python code</a>.
+     * <p>Defaults to false</p>
      */
-    private Float frequency_penalty;
+    private Boolean stream;
+
+    /**
+     * A list of messages comprising the conversation so far.
+     * <a href="https://cookbook.openai.com/examples/how_to_format_inputs_to_chatgpt_models">Example Python code</a>.
+     */
+    @Required
+    private List<Message> messages;
 
     /**
      * Controls how the model calls functions.
@@ -118,6 +119,16 @@ public class CompletionRequest extends Request {
 
     /**
      * Number between -2.0 and 2.0.
+     * <p>
+     * Positive values penalize new tokens based on their existing frequency in the text so far,
+     * decreasing the model's likelihood to repeat the same line verbatim.
+     * </p>
+     * <p>Defaults to 0</p>
+     */
+    private Float frequency_penalty;
+
+    /**
+     * Number between -2.0 and 2.0.
      * Positive values penalize new tokens based on whether they appear in the text so far,
      * increasing the model's likelihood to talk about new topics.
      * <p>Defaults to 0</p>
@@ -150,17 +161,6 @@ public class CompletionRequest extends Request {
      * <p>string / array / null; Defaults to null</p>
      */
     private List<String> stop;
-
-    /**
-     * If set, partial message deltas will be sent, like in ChatGPT.
-     * Tokens will be sent as data-only
-     * <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format">server-sent events</a> as they become available,
-     * with the stream terminated by a {@code data: [DONE]} message.
-     * <p>
-     * <a href="https://cookbook.openai.com/examples/how_to_stream_completions">Example Python code</a>.
-     * <p>Defaults to false</p>
-     */
-    private Boolean stream;
 
     /**
      * What sampling temperature to use, between 0 and 2.

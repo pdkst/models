@@ -15,10 +15,22 @@ import lombok.Data;
 @Builder
 public class OpenaiConfig {
     @Builder.Default
-    private String base = "https://api.openai.com";
+    private String base = "api.openai.com";
     @Builder.Default
     private JsonMapper jsonMapper = new JacksonMapper();
     @Builder.Default
     private HttpExchanger httpExchanger = new OkHttp3HttpExchanger();
     private OpenaiKeySelector keySelector;
+
+    public void initDefaults() {
+        if (keySelector == null) {
+            throw new NullPointerException("keySelector");
+        }
+        if (jsonMapper == null) {
+            jsonMapper = new JacksonMapper();
+        }
+        if (httpExchanger == null) {
+            httpExchanger = new OkHttp3HttpExchanger();
+        }
+    }
 }
