@@ -30,7 +30,7 @@ public class OpenaiChatCompletion {
      * @throws Exception errors
      */
     public CompletionResponse completion(CompletionRequest request) throws Exception {
-        HttpRequest post = HttpRequest.post("/v1/chat/completions", request);
+        HttpRequest post = HttpRequest.post("/chat/completions", request);
         final HttpResponse response = exchanger.exchange(post);
         return response.body(CompletionResponse.class);
     }
@@ -43,7 +43,7 @@ public class OpenaiChatCompletion {
      * @throws Exception errors
      */
     public void stream(CompletionRequest request, ServerSideEventListener listener) throws Exception {
-        final HttpRequest post = HttpRequest.post("/v1/chat/completions", request);
+        final HttpRequest post = HttpRequest.post("/chat/completions", request);
         exchanger.serverSideEvent(post, listener);
     }
 }

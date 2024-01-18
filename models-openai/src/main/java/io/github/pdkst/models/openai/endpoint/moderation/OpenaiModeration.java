@@ -35,7 +35,7 @@ public class OpenaiModeration {
      * @throws Exception errors
      */
     public ModerationResponse createModeration(@Required List<String> input, String model) throws Exception {
-        final HttpRequest post = HttpRequest.post("/v1/moderations")
+        final HttpRequest post = HttpRequest.post("/moderations")
                 .form("input", input)
                 .form("model", model);
         final HttpResponse response = exchanger.exchange(post);

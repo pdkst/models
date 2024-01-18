@@ -28,7 +28,7 @@ public class OpenaiModels {
      * @throws Exception errors
      */
     public ModelsResponse listModels() throws Exception {
-        HttpRequest get = HttpRequest.get("/v1/models");
+        HttpRequest get = HttpRequest.get("/models");
         final HttpResponse response = exchanger.exchange(get);
         return response.body(ModelsResponse.class);
     }
@@ -41,7 +41,7 @@ public class OpenaiModels {
      * @throws Exception errors
      */
     public ModelObject retrieveModel(String model) throws Exception {
-        HttpRequest get = HttpRequest.get("/v1/models/" + model);
+        HttpRequest get = HttpRequest.get("/models/" + model);
         final HttpResponse response = exchanger.exchange(get);
         return response.body(ModelObject.class);
     }
@@ -56,7 +56,7 @@ public class OpenaiModels {
      * @throws Exception errors
      */
     public DeleteModelResponse deleteFineTuneModel(String model) throws Exception {
-        HttpRequest delete = HttpRequest.delete("/v1/models/" + model);
+        HttpRequest delete = HttpRequest.delete("/models/" + model);
         final HttpResponse response = exchanger.exchange(delete);
         return response.body(DeleteModelResponse.class);
     }

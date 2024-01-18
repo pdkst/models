@@ -26,7 +26,7 @@ public class OpenaiEmbeddings {
      * @throws Exception errors
      */
     public EmbeddingsResponse embeddings(EmbeddingsRequest request) throws Exception {
-        final HttpRequest post = HttpRequest.post("/v1/embeddings", request);
+        final HttpRequest post = HttpRequest.post("/embeddings", request);
         final HttpResponse response = exchanger.exchange(post);
         return response.body(EmbeddingsResponse.class);
     }

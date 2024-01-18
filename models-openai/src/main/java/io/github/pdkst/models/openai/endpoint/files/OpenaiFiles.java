@@ -41,14 +41,14 @@ public class OpenaiFiles {
     }
 
     private ListFilesResponse listFilesPurposeApi(String purpose) throws Exception {
-        final HttpRequest get = HttpRequest.get("/v1/files")
+        final HttpRequest get = HttpRequest.get("/files")
                 .form("purpose", purpose);
         final HttpResponse response = exchanger.exchange(get);
         return response.body(ListFilesResponse.class);
     }
 
     private ListFilesResponse listFilesApi() throws Exception {
-        final HttpRequest get = HttpRequest.get("/v1/files");
+        final HttpRequest get = HttpRequest.get("/files");
         final HttpResponse response = exchanger.exchange(get);
         return response.body(ListFilesResponse.class);
     }
@@ -65,7 +65,7 @@ public class OpenaiFiles {
         final String purpose = request.getPurpose();
         final HttpRequest httpRequest = HttpRequest.create()
                 .method(HttpMethod.POST)
-                .url("/v1/files")
+                .url("/files")
                 .file(request.getFile())
                 .form("purpose", purpose);
         final HttpResponse response = exchanger.exchange(httpRequest);
@@ -79,7 +79,7 @@ public class OpenaiFiles {
      * @return Deletion status.
      */
     public DeleteFileResponse deleteFile(String fileId) throws Exception {
-        final HttpRequest delete = HttpRequest.delete("/v1/files/" + fileId);
+        final HttpRequest delete = HttpRequest.delete("/files/" + fileId);
         final HttpResponse response = exchanger.exchange(delete);
         return response.body(DeleteFileResponse.class);
     }
@@ -91,7 +91,7 @@ public class OpenaiFiles {
      * @return The file object matching the specified ID.
      */
     public FileObject retrieveFile(@Required String fileId) throws Exception {
-        final HttpRequest get = HttpRequest.get("/v1/files/" + fileId);
+        final HttpRequest get = HttpRequest.get("/files/" + fileId);
         final HttpResponse response = exchanger.exchange(get);
         return response.body(FileObject.class);
     }
@@ -103,7 +103,7 @@ public class OpenaiFiles {
      * @return The file content.
      */
     public InputStream retrieveFileContent(@Required String fileId) throws Exception {
-        final HttpRequest get = HttpRequest.get("/v1/files/" + fileId + "/content");
+        final HttpRequest get = HttpRequest.get("/files/" + fileId + "/content");
         final HttpResponse response = exchanger.exchange(get);
         return response.byteStream();
     }

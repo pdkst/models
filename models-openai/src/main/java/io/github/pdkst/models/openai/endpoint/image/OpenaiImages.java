@@ -20,7 +20,7 @@ public class OpenaiImages {
 
     public ImageResponse createImages(ImagesRequest request) throws Exception {
         HttpRequest post = HttpRequest.create()
-                .url("/v1/images/generations")
+                .url("/images/generations")
                 .json(request);
         final HttpResponse response = exchanger.exchange(post);
         return response.body(ImageResponse.class);
