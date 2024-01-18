@@ -26,8 +26,12 @@ public class RandomOpenaiKeySelector {
     }
 
     public OpenaiKey select(String path) {
-        final int nextInt = random.nextInt(keys.size());
+        final int nextInt = getNextInt();
         final String key = keys.get(nextInt);
         return new OpenaiKey(key, builder.build(path));
+    }
+
+    protected int getNextInt() {
+        return random.nextInt(keys.size());
     }
 }
