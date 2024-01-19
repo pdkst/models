@@ -3,7 +3,6 @@ package io.github.pdkst.models.openai.client;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -12,7 +11,7 @@ import java.util.Random;
  * @since 2024/01/18
  */
 @RequiredArgsConstructor
-public class RandomOpenaiKeySelector {
+public class RandomOpenaiKeySelector implements OpenaiKeySelector {
     private final Random random;
     private final OpenaiUrlBuilder builder;
     private final List<String> keys;
@@ -22,13 +21,15 @@ public class RandomOpenaiKeySelector {
     }
 
     public RandomOpenaiKeySelector(OpenaiUrlBuilder builder, List<String> keys) {
-        this(new Random(), builder, Collections.unmodifiableList(keys));
+        this(new Random(), builder, keys);
     }
 
+    @Override
     public OpenaiKey select(String path) {
         final int nextInt = getNextInt();
         final String key = keys.get(nextInt);
-        return new OpenaiKey(key, builder.build(path));
+        final String url = builder.build(path);
+        return new OpenaiKey(url, key);
     }
 
     protected int getNextInt() {

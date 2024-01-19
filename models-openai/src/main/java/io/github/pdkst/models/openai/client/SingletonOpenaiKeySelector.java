@@ -20,6 +20,7 @@ public class SingletonOpenaiKeySelector implements OpenaiKeySelector {
 
     @Override
     public OpenaiKey select(String api) {
-        return new OpenaiKey(key, builder.build(api));
+        final String url = builder.build(api);
+        return new OpenaiKey(url, key);
     }
 }
