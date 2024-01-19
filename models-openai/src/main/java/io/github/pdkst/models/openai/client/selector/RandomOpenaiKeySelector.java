@@ -1,5 +1,8 @@
-package io.github.pdkst.models.openai.client;
+package io.github.pdkst.models.openai.client.selector;
 
+import io.github.pdkst.models.openai.client.OpenaiKey;
+import io.github.pdkst.models.openai.client.OpenaiKeySelector;
+import io.github.pdkst.models.openai.client.OpenaiUrlBuilder;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;

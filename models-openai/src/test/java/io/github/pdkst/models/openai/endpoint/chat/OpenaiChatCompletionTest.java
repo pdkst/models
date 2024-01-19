@@ -1,19 +1,14 @@
 package io.github.pdkst.models.openai.endpoint.chat;
 
 import io.github.pdkst.models.http.clients.OkHttp3HttpExchanger;
-import io.github.pdkst.models.json.JacksonMapper;
-import io.github.pdkst.models.openai.client.OpenaiClient;
-import io.github.pdkst.models.openai.client.OpenaiConfig;
 import io.github.pdkst.models.openai.client.OpenaiDelegateHttpExchanger;
-import io.github.pdkst.models.openai.client.OpenaiKeySelector;
-import io.github.pdkst.models.openai.client.SingletonOpenaiKeySelector;
+import io.github.pdkst.models.openai.client.selector.SingletonOpenaiKeySelector;
 import io.github.pdkst.models.openai.endpoint.chat.request.CompletionRequest;
 import io.github.pdkst.models.openai.endpoint.chat.request.Message;
 import io.github.pdkst.models.openai.endpoint.chat.response.CompletionResponse;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 import static org.junit.Assert.*;
