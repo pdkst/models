@@ -21,4 +21,9 @@ public class DelegateHttpExchanger implements HttpExchanger {
     public void serverSideEvent(HttpRequest request, ServerSideEventListener listener) throws Exception {
         delegate.serverSideEvent(request, listener);
     }
+
+    @Override
+    public void addInterceptor(Interceptor interceptor) {
+        delegate.addInterceptor(interceptor);
+    }
 }

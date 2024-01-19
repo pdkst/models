@@ -1,7 +1,6 @@
 package io.github.pdkst.models.openai.endpoint.chat;
 
 import io.github.pdkst.models.http.clients.OkHttp3HttpExchanger;
-import io.github.pdkst.models.openai.client.OpenaiDelegateHttpExchanger;
 import io.github.pdkst.models.openai.client.selector.SingletonOpenaiKeySelector;
 import io.github.pdkst.models.openai.endpoint.chat.request.CompletionRequest;
 import io.github.pdkst.models.openai.endpoint.chat.request.Message;

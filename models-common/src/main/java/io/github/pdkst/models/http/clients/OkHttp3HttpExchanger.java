@@ -41,14 +41,14 @@ public class OkHttp3HttpExchanger extends AbstractHttpExchanger {
     }
 
     @Override
-    public HttpResponse exchange(HttpRequest request) throws Exception {
+    protected HttpResponse doExchange(HttpRequest request) throws Exception {
         final Request okhttp3Request = buildRequest(request);
         final Response response = client.newCall(okhttp3Request).execute();
         return new Okhttp3HttpResponse(response, jsonMapper);
     }
 
     @Override
-    public void serverSideEvent(HttpRequest request, ServerSideEventListener listener) throws Exception {
+    public void doServerSideEvent(HttpRequest request, ServerSideEventListener listener) throws Exception {
         final Request rawRequest = buildRequest(request);
         EventSource.Factory factory = EventSources.createFactory(client);
         final Okhttp3EventListenerAdapter listenerAdapter

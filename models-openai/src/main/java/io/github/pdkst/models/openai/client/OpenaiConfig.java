@@ -4,23 +4,29 @@ import io.github.pdkst.models.http.HttpExchanger;
 import io.github.pdkst.models.http.clients.OkHttp3HttpExchanger;
 import io.github.pdkst.models.json.JacksonMapper;
 import io.github.pdkst.models.json.JsonMapper;
-import lombok.Builder;
+import io.github.pdkst.models.openai.client.selector.RandomOpenaiKeySelector;
 import lombok.Data;
+import lombok.experimental.Delegate;
 
 /**
  * @author pdkst.zhang
  * @since 2023/11/02
  */
 @Data
-@Builder
 public class OpenaiConfig {
-    @Builder.Default
-    private String base = "api.openai.com";
-    @Builder.Default
     private JsonMapper jsonMapper = new JacksonMapper();
-    @Builder.Default
     private HttpExchanger httpExchanger = new OkHttp3HttpExchanger();
+    @Delegate
+    private OpenaiUrlBuilder builder = new OpenaiUrlBuilder();
     private OpenaiKeySelector keySelector;
+
+    public void key(String key) {
+        keySelector = OpenaiKeySelector.singleton(key);
+    }
+
+    public void keys(String... key) {
+        keySelector = new RandomOpenaiKeySelector(builder, key);
+    }
 
     public void initDefaults() {
         if (keySelector == null) {
