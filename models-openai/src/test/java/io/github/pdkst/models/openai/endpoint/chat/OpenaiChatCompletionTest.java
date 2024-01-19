@@ -1,6 +1,7 @@
 package io.github.pdkst.models.openai.endpoint.chat;
 
 import io.github.pdkst.models.http.clients.OkHttp3HttpExchanger;
+import io.github.pdkst.models.openai.client.OpenaiKeyInterceptor;
 import io.github.pdkst.models.openai.client.selector.SingletonOpenaiKeySelector;
 import io.github.pdkst.models.openai.endpoint.chat.request.CompletionRequest;
 import io.github.pdkst.models.openai.endpoint.chat.request.Message;
@@ -24,8 +25,8 @@ public class OpenaiChatCompletionTest {
         final SingletonOpenaiKeySelector selector = new SingletonOpenaiKeySelector("");
         selector.setDomain("localhost:8080");
         final OkHttp3HttpExchanger delegate = new OkHttp3HttpExchanger();
-        final OpenaiDelegateHttpExchanger exchanger = new OpenaiDelegateHttpExchanger(delegate, selector);
-        completion = new OpenaiChatCompletion(exchanger);
+        delegate.addInterceptor(new OpenaiKeyInterceptor(selector));
+        completion = new OpenaiChatCompletion(delegate);
     }
 
     @Test
