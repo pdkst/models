@@ -1,7 +1,6 @@
 package io.github.pdkst.models.openai.client;
 
 import io.github.pdkst.models.http.HttpExchanger;
-import io.github.pdkst.models.openai.client.selector.OpenaiKeyInterceptor;
 import io.github.pdkst.models.openai.endpoint.chat.OpenaiChatCompletion;
 import lombok.Data;
 

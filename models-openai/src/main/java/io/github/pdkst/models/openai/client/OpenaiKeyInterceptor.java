@@ -1,4 +1,4 @@
-package io.github.pdkst.models.openai.client.selector;
+package io.github.pdkst.models.openai.client;
 
 import io.github.pdkst.models.http.Interceptor;
 import io.github.pdkst.models.http.request.HttpRequest;
