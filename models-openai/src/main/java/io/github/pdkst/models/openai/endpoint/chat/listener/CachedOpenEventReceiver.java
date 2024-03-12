@@ -16,17 +16,19 @@ import static org.apache.commons.lang3.StringUtils.defaultIfEmpty;
 import static org.apache.commons.lang3.StringUtils.join;
 
 /**
+ * 缓存openai内容
+ *
  * @author pdkst.zhang
  * @since 2024/03/12
  */
 @Slf4j
 @RequiredArgsConstructor
 public class CachedOpenEventReceiver implements OpenaiEventReceiver {
-    private final CompletionChunkResponse response = new CompletionChunkResponse();
+    private final CompletionChunkResponse cached = new CompletionChunkResponse();
 
     @Override
     public void onEvent(CompletionChunkResponse next) {
-        mergeResponse(response, next);
+        mergeResponse(cached, next);
     }
 
     private void mergeResponse(CompletionChunkResponse response, CompletionChunkResponse next) {
