@@ -1,4 +1,4 @@
-package io.github.pdkst.models.openai.embedded.controller.chat;
+package io.github.pdkst.models.openai.sample.controller.chat;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;

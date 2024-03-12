@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>io.github.pdkst.openai.sdk</groupId>
-    <artifactId>models-openai-embedded-server</artifactId>
+    <artifactId>models-openai-sample-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>

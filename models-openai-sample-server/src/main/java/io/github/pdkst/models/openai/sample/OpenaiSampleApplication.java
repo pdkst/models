@@ -1,4 +1,4 @@
-package io.github.pdkst.models.openai.embedded;
+package io.github.pdkst.models.openai.sample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 2023/12/31
  */
 @SpringBootApplication
-public class OpenaiEmbeddedApplication {
+public class OpenaiSampleApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OpenaiEmbeddedApplication.class, args);
+        SpringApplication.run(OpenaiSampleApplication.class, args);
     }
 }
