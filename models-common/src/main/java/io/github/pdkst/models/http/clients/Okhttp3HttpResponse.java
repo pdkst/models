@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -31,5 +32,18 @@ public class Okhttp3HttpResponse implements HttpResponse {
     @Override
     public InputStream byteStream() {
         return response.body() != null ? response.body().byteStream() : null;
+    }
+
+    @Override
+    public String string() {
+        final ResponseBody body = response.body();
+        if (body == null) {
+            return null;
+        }
+        try {
+            return body.string();
+        } catch (IOException e) {
+            return null;
+        }
     }
 }
