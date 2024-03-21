@@ -27,7 +27,6 @@ public class ToolDescriptor implements Iterable<Map.Entry<Method, ToolDefinition
     public static ToolDescriptor parse(Class<?> clazz) {
         final ToolDescriptor descriptor = new ToolDescriptor();
         final Method[] methods = clazz.getMethods();
-        final List<ToolCall> tools = new ArrayList<>();
         for (Method method : methods) {
             if (method.isAnnotationPresent(Tool.class)) {
                 descriptor.getToolDefinition(method);
