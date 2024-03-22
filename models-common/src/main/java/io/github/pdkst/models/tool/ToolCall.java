@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.Map;
 
 /**
@@ -18,7 +19,8 @@ public class ToolCall {
 
     public Object apply(Map<String, Object> parameterMap)
             throws InvocationTargetException, IllegalAccessException {
-        Object[] parameterArrays = definition.parseParameterArray(parameterMap);
+        final Parameter[] parameters = method.getParameters();
+        Object[] parameterArrays = definition.parseParameterArray(parameters, parameterMap);
         return method.invoke(target, parameterArrays);
     }
 }
