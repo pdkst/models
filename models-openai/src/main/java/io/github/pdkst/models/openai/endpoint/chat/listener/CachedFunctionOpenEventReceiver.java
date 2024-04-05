@@ -97,6 +97,9 @@ public abstract class CachedFunctionOpenEventReceiver extends CachedOpenaiEventR
     public void processContent(CompletionChunkResponse cached) {
         final List<ChunkChoice> choices = cached.getChoices();
         for (ChunkChoice choice : choices) {
+            if (choice == null) {
+                continue;
+            }
             processDeltaContent(choice.getDelta());
         }
     }
