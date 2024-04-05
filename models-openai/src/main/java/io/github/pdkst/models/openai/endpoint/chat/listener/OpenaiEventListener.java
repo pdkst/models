@@ -25,8 +25,15 @@ public class OpenaiEventListener implements ServerSideEventListener {
 
     @Override
     public void onEvent(String id, String type, String data) {
-        if ("[DONE]".equals(data)){
+        receiver.onRawEvent(id, type, data);
+        dispatch(data);
+        receiver.afterEvent(id, type, data);
+    }
+
+    private void dispatch(String data) {
+        if ("[DONE]".equals(data)) {
             receiver.onDone();
+            return;
         }
         try {
             final CompletionChunkResponse response = jsonMapper.parse(data, CompletionChunkResponse.class);
