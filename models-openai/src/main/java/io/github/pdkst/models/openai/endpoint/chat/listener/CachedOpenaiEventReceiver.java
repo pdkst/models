@@ -5,6 +5,7 @@ import io.github.pdkst.models.openai.endpoint.chat.request.ToolCall;
 import io.github.pdkst.models.openai.endpoint.chat.response.ChunkChoice;
 import io.github.pdkst.models.openai.endpoint.chat.response.ChunkChoiceDelta;
 import io.github.pdkst.models.openai.endpoint.chat.response.CompletionChunkResponse;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,8 +23,9 @@ import static org.apache.commons.lang3.StringUtils.join;
  * @since 2024/03/12
  */
 @Slf4j
+@Getter
 @RequiredArgsConstructor
-public class CachedOpenEventReceiver implements OpenaiEventReceiver {
+public class CachedOpenaiEventReceiver implements OpenaiEventReceiver {
     private final CompletionChunkResponse cached = new CompletionChunkResponse();
 
     @Override
