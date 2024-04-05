@@ -95,13 +95,13 @@ public class ToolDefinition {
         } else if (type.equals(Float.class) || type.equals(Float.TYPE)) {
             return NumberUtils.toFloat(stringValue);
         } else if (type.equals(Short.class) || type.equals(Short.TYPE)) {
-            return NumberUtils.toFloat(stringValue);
+            return NumberUtils.toShort(stringValue);
         } else if (type.equals(Byte.class) || type.equals(Byte.TYPE)) {
             return NumberUtils.toByte(stringValue);
         } else if (type.equals(BigDecimal.class)) {
             return NumberUtils.toScaledBigDecimal(stringValue);
         } else if (type.equals(BigInteger.class)) {
-            return NumberUtils.createInteger(stringValue);
+            return NumberUtils.createBigInteger(stringValue);
         }
         return null;
     }
