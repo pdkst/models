@@ -1,5 +1,7 @@
 package io.github.pdkst.models.openai.client;
 
+import io.github.pdkst.models.openai.client.selector.SingletonOpenaiKeySelector;
+
 /**
  * select openai keys
  *

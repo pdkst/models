@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.io.File;
 import java.util.LinkedHashMap;
@@ -106,6 +107,11 @@ public class HttpRequest {
 
     public HttpRequest form(String key, List<String> values) {
         form.add(key, values);
+        return this;
+    }
+
+    public HttpRequest query(String key, Object value) {
+        query.put(key, ObjectUtils.defaultIfNull(value, "").toString());
         return this;
     }
 

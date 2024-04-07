@@ -10,4 +10,6 @@ public interface HttpResponse {
     <T> T body(Class<T> resultType) throws Exception;
 
     InputStream byteStream();
+
+    String string();
 }
