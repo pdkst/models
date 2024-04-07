@@ -13,7 +13,7 @@ import lombok.experimental.Delegate;
  * @since 2023/11/02
  */
 @Data
-public class OpenaiConfig {
+public class OpenaiOptions {
     private JsonMapper jsonMapper = new JacksonMapper();
     private HttpExchanger httpExchanger = new OkHttp3HttpExchanger();
     @Delegate
@@ -28,15 +28,20 @@ public class OpenaiConfig {
         keySelector = new RandomOpenaiKeySelector(builder, key);
     }
 
-    public void initDefaults() {
-        if (keySelector == null) {
+    public OpenaiOptions withDefaults() {
+        initDefaults(this);
+        return this;
+    }
+
+    public static void initDefaults(OpenaiOptions config) {
+        if (config.keySelector == null) {
             throw new NullPointerException("keySelector");
         }
-        if (jsonMapper == null) {
-            jsonMapper = new JacksonMapper();
+        if (config.jsonMapper == null) {
+            config.jsonMapper = new JacksonMapper();
         }
-        if (httpExchanger == null) {
-            httpExchanger = new OkHttp3HttpExchanger();
+        if (config.httpExchanger == null) {
+            config.httpExchanger = new OkHttp3HttpExchanger();
         }
     }
 }

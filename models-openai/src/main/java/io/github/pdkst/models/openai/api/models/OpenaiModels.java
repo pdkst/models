@@ -1,6 +1,6 @@
 package io.github.pdkst.models.openai.api.models;
 
-import io.github.pdkst.models.http.AbstractHttpExchanger;
+import io.github.pdkst.models.http.HttpExchanger;
 import io.github.pdkst.models.http.HttpResponse;
 import io.github.pdkst.models.http.request.HttpRequest;
 import io.github.pdkst.models.openai.api.models.response.DeleteModelResponse;
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public class OpenaiModels {
-    private final AbstractHttpExchanger exchanger;
+    private final HttpExchanger exchanger;
 
     /**
      * Lists the currently available models,

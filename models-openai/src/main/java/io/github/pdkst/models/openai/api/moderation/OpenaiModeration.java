@@ -1,7 +1,7 @@
 package io.github.pdkst.models.openai.api.moderation;
 
 import io.github.pdkst.models.annotation.Required;
-import io.github.pdkst.models.http.AbstractHttpExchanger;
+import io.github.pdkst.models.http.HttpExchanger;
 import io.github.pdkst.models.http.HttpResponse;
 import io.github.pdkst.models.http.request.HttpRequest;
 import io.github.pdkst.models.openai.api.moderation.response.ModerationResponse;
@@ -19,7 +19,7 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 public class OpenaiModeration {
-    private final AbstractHttpExchanger exchanger;
+    private final HttpExchanger exchanger;
 
     /**
      * Classifies if text violates OpenAI's Content Policy
