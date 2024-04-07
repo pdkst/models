@@ -28,7 +28,7 @@ public class FileObject extends Response {
     /**
      * The Unix timestamp (in seconds) for when the file was created.
      */
-    private Integer created_at;
+    private Long created_at;
     /**
      * The name of the file.
      */
