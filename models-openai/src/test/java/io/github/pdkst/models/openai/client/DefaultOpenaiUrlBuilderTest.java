@@ -2,13 +2,13 @@ package io.github.pdkst.models.openai.client;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author pdkst.zhang
  * @since 2024/01/18
  */
-public class OpenaiUrlBuilderTest {
+public class DefaultOpenaiUrlBuilderTest {
 
     @Test
     public void build() {

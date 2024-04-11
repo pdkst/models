@@ -27,7 +27,7 @@ public class OpenaiClient {
 
     private HttpExchanger buildHttpExchanger(OpenaiOptions config) {
         final OpenaiOptions openaiOptions = this.options.withDefaults();
-        final OpenaiKeySelector keySelector = config.getKeySelector();
+        final OpenaiEndpointSelector keySelector = config.getSelector();
         HttpExchanger httpExchanger = openaiOptions.getHttpExchanger();
         httpExchanger.addInterceptor(new OpenaiKeyInterceptor(keySelector));
         return httpExchanger;

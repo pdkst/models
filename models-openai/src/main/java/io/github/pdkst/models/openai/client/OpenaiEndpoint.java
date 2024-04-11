@@ -7,7 +7,7 @@ import lombok.Data;
  * @since 2024/01/18
  */
 @Data
-public class OpenaiKey {
+public class OpenaiEndpoint {
     /**
      * api路径
      */
@@ -15,5 +15,5 @@ public class OpenaiKey {
     /**
      * api key
      */
-    private final String key;
+    private final Credentials credentials;
 }

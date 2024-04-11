@@ -6,7 +6,6 @@ import io.github.pdkst.models.json.JacksonMapper;
 import io.github.pdkst.models.json.JsonMapper;
 import io.github.pdkst.models.openai.client.selector.RandomOpenaiKeySelector;
 import lombok.Data;
-import lombok.experimental.Delegate;
 
 /**
  * @author pdkst.zhang
@@ -16,16 +15,18 @@ import lombok.experimental.Delegate;
 public class OpenaiOptions {
     private JsonMapper jsonMapper = new JacksonMapper();
     private HttpExchanger httpExchanger = new OkHttp3HttpExchanger();
-    @Delegate
-    private OpenaiUrlBuilder builder = new OpenaiUrlBuilder();
-    private OpenaiKeySelector keySelector;
+    private OpenaiEndpointSelector selector;
 
     public void key(String key) {
-        keySelector = OpenaiKeySelector.singleton(key);
+        selector = OpenaiEndpointSelector.singleton(key);
     }
 
     public void keys(String... key) {
-        keySelector = new RandomOpenaiKeySelector(builder, key);
+        selector = new RandomOpenaiKeySelector(key);
+    }
+
+    public void selectors(OpenaiEndpointSelector... keys) {
+        selector = new RandomOpenaiKeySelector(keys);
     }
 
     public OpenaiOptions withDefaults() {
@@ -34,7 +35,7 @@ public class OpenaiOptions {
     }
 
     public static void initDefaults(OpenaiOptions config) {
-        if (config.keySelector == null) {
+        if (config.selector == null) {
             throw new NullPointerException("keySelector");
         }
         if (config.jsonMapper == null) {

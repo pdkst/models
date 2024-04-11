@@ -7,7 +7,7 @@ import lombok.Data;
  * @since 2024/01/19
  */
 @Data
-public class AzureUrlBuilder {
+public class AzureOpenaiUrlBuilder {
     private String schema = "https";
     private String resource = "";
     private String domain = "openai.azure.com";

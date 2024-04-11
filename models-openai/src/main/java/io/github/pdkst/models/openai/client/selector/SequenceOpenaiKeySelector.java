@@ -1,8 +1,7 @@
 package io.github.pdkst.models.openai.client.selector;
 
-import io.github.pdkst.models.openai.client.OpenaiKey;
-import io.github.pdkst.models.openai.client.OpenaiKeySelector;
-import io.github.pdkst.models.openai.client.OpenaiUrlBuilder;
+import io.github.pdkst.models.openai.client.OpenaiEndpoint;
+import io.github.pdkst.models.openai.client.OpenaiEndpointSelector;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -17,21 +16,19 @@ import java.util.List;
  */
 @Data
 @RequiredArgsConstructor
-public class SequenceOpenaiKeySelector implements OpenaiKeySelector {
-    private final OpenaiUrlBuilder builder;
-    private final List<String> selectors;
+public class SequenceOpenaiKeySelector implements OpenaiEndpointSelector {
+    private final List<OpenaiEndpointSelector> selectors;
     private volatile int index = 0;
 
-    public SequenceOpenaiKeySelector(OpenaiUrlBuilder builder, String... keys) {
-        this(builder, Arrays.asList(keys));
+    public SequenceOpenaiKeySelector(String... keys) {
+        this(OpenaiEndpointSelector.buildSelectors(Arrays.asList(keys)));
     }
 
     @Override
-    public synchronized OpenaiKey select(String path) {
+    public synchronized OpenaiEndpoint select(String path) {
         index++;
         index %= selectors.size();
-        final String key = selectors.get(index);
-        final String url = builder.build(path);
-        return new OpenaiKey(url, key);
+        final OpenaiEndpointSelector selector = selectors.get(index);
+        return selector.select(path);
     }
 }

@@ -1,9 +1,9 @@
 package io.github.pdkst.models.openai.client.selector;
 
-import io.github.pdkst.models.openai.client.OpenaiKey;
-import io.github.pdkst.models.openai.client.OpenaiKeySelector;
-import io.github.pdkst.models.openai.client.OpenaiUrlBuilder;
+import io.github.pdkst.models.openai.client.OpenaiEndpoint;
+import io.github.pdkst.models.openai.client.OpenaiEndpointSelector;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.Delegate;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,28 +14,35 @@ import java.util.Random;
  * @since 2024/01/18
  */
 @RequiredArgsConstructor
-public class RandomOpenaiKeySelector implements OpenaiKeySelector {
+public class RandomOpenaiKeySelector implements OpenaiEndpointSelector {
     private final Random random;
-    private final OpenaiUrlBuilder builder;
-    private final List<String> keys;
+    @Delegate
+    private final List<OpenaiEndpointSelector> selectors;
 
-    public RandomOpenaiKeySelector(OpenaiUrlBuilder builder, String... keys) {
-        this(builder, Arrays.asList(keys));
+    public RandomOpenaiKeySelector(String... keys) {
+        this(Arrays.asList(keys));
     }
 
-    public RandomOpenaiKeySelector(OpenaiUrlBuilder builder, List<String> keys) {
-        this(new Random(), builder, keys);
+    public RandomOpenaiKeySelector(List<String> keys) {
+        this(new Random(), OpenaiEndpointSelector.buildSelectors(keys));
+    }
+
+    public RandomOpenaiKeySelector(OpenaiEndpointSelector... selectors) {
+        this(new Random(), selectors);
+    }
+
+    public RandomOpenaiKeySelector(Random random, OpenaiEndpointSelector... selectors) {
+        this(new Random(), Arrays.asList(selectors));
     }
 
     @Override
-    public OpenaiKey select(String path) {
+    public OpenaiEndpoint select(String path) {
         final int nextInt = getNextInt();
-        final String key = keys.get(nextInt);
-        final String url = builder.build(path);
-        return new OpenaiKey(url, key);
+        final OpenaiEndpointSelector selector = selectors.get(nextInt);
+        return selector.select(path);
     }
 
     protected int getNextInt() {
-        return random.nextInt(keys.size());
+        return random.nextInt(selectors.size());
     }
 }

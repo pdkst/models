@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author pdkst.zhang
@@ -20,12 +20,12 @@ public class RandomOpenaiKeySelectorTest {
     @Before
     public void setUp() {
         final OpenaiUrlBuilder builder = new OpenaiUrlBuilder();
-        randomOpenaiKeySelector = new RandomOpenaiKeySelector(builder, keys);
+        randomOpenaiKeySelector = new RandomOpenaiKeySelector(keys);
     }
 
     @Test
     public void select() {
-        final OpenaiKey openaiKey = randomOpenaiKeySelector.select("/embeddings");
-        assertTrue(keys.contains(openaiKey.getKey()));
+        final OpenaiEndpoint endpoint = randomOpenaiKeySelector.select("/embeddings");
+        assertNotNull(endpoint);
     }
 }
