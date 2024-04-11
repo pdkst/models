@@ -37,7 +37,7 @@ public class OpenaiClient {
         return new OpenaiAudio(httpExchanger);
     }
 
-    public OpenaiChatCompletion chatCompletion() {
+    public OpenaiChatCompletion chat() {
         return new OpenaiChatCompletion(httpExchanger);
     }
 
