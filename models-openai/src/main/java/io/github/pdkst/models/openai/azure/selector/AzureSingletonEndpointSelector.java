@@ -12,11 +12,11 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public class AzureSingletonEndpointSelector implements OpenaiEndpointSelector {
-    private final AzureOpenaiUrlBuilder builder = new AzureOpenaiUrlBuilder();
+    private final AzureOpenaiUrlBuilder builder;
     private final AzureOpenaiCredentials credentials;
 
-    public AzureSingletonEndpointSelector(String subscriptionKey) {
-        this(new AzureOpenaiCredentials(subscriptionKey));
+    public AzureSingletonEndpointSelector(AzureOpenaiUrlBuilder builder, String subscriptionKey) {
+        this(builder, new AzureOpenaiCredentials(subscriptionKey));
     }
 
     @Override

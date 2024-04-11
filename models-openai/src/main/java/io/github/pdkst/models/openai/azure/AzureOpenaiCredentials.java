@@ -2,7 +2,6 @@ package io.github.pdkst.models.openai.azure;
 
 import io.github.pdkst.models.openai.client.Credentials;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -14,7 +13,6 @@ import java.util.Map;
  * @since 2024/04/11
  */
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class AzureOpenaiCredentials implements Credentials {
     private final Map<String, String> credentials = new HashMap<>();
 
