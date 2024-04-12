@@ -14,18 +14,18 @@ import lombok.experimental.Delegate;
  */
 @RequiredArgsConstructor
 public class SingletonOpenaiEndpointSelector implements OpenaiEndpointSelector {
-    private final Credentials key;
+    private final Credentials credentials;
     @Delegate
     private final OpenaiUrlBuilder builder;
 
     public SingletonOpenaiEndpointSelector(String key) {
-        this.key = new OpenaiCredentials(key);
+        this.credentials = new OpenaiCredentials(key);
         this.builder = new OpenaiUrlBuilder();
     }
 
     @Override
     public OpenaiEndpoint select(String api) {
         final String url = builder.build(api);
-        return new OpenaiEndpoint(url, key);
+        return new OpenaiEndpoint(url, credentials);
     }
 }

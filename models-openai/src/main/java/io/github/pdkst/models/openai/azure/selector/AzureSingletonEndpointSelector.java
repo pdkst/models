@@ -5,6 +5,7 @@ import io.github.pdkst.models.openai.azure.AzureOpenaiUrlBuilder;
 import io.github.pdkst.models.openai.client.OpenaiEndpoint;
 import io.github.pdkst.models.openai.client.OpenaiEndpointSelector;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.Delegate;
 
 /**
  * @author pdkst.zhang
@@ -12,8 +13,13 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public class AzureSingletonEndpointSelector implements OpenaiEndpointSelector {
+    @Delegate
     private final AzureOpenaiUrlBuilder builder;
     private final AzureOpenaiCredentials credentials;
+
+    public AzureSingletonEndpointSelector(String subscriptionKey) {
+        this(new AzureOpenaiUrlBuilder(), new AzureOpenaiCredentials(subscriptionKey));
+    }
 
     public AzureSingletonEndpointSelector(AzureOpenaiUrlBuilder builder, String subscriptionKey) {
         this(builder, new AzureOpenaiCredentials(subscriptionKey));

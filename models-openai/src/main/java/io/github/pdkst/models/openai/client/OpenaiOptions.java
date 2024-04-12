@@ -21,12 +21,19 @@ public class OpenaiOptions {
         selector = OpenaiEndpointSelector.singleton(key);
     }
 
-    public void keys(String... key) {
-        selector = new RandomOpenaiKeySelector(key);
+    public void keys(String... keys) {
+        selector = new RandomOpenaiKeySelector(keys);
     }
 
     public void selectors(OpenaiEndpointSelector... keys) {
-        selector = new RandomOpenaiKeySelector(keys);
+        if (keys.length == 0) {
+            throw new IllegalArgumentException("keys");
+        }
+        if (keys.length == 1) {
+            selector = keys[0];
+        } else {
+            selector = new RandomOpenaiKeySelector(keys);
+        }
     }
 
     public OpenaiOptions withDefaults() {
