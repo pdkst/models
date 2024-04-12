@@ -6,6 +6,7 @@ import io.github.pdkst.models.json.JacksonMapper;
 import io.github.pdkst.models.json.JsonMapper;
 import io.github.pdkst.models.openai.client.selector.RandomOpenaiEndpointSelector;
 import lombok.Data;
+import okhttp3.OkHttpClient;
 
 /**
  * @author pdkst.zhang
@@ -13,43 +14,40 @@ import lombok.Data;
  */
 @Data
 public class OpenaiOptions {
-    private JsonMapper jsonMapper = new JacksonMapper();
-    private HttpExchanger httpExchanger = new OkHttp3HttpExchanger();
-    private OpenaiEndpointSelector selector;
-
-    public void key(String key) {
-        selector = OpenaiEndpointSelector.singleton(key);
-    }
+    private String[] keys;
+    private OpenaiEndpointSelector[] selectors;
+    private OkHttpClient okHttpClient;
+    private JsonMapper jsonMapper;
+    private HttpExchanger httpExchanger;
 
     public void keys(String... keys) {
-        selector = new RandomOpenaiEndpointSelector(keys);
+        this.keys = keys;
     }
 
     public void selectors(OpenaiEndpointSelector... keys) {
-        if (keys.length == 0) {
-            throw new IllegalArgumentException("keys");
-        }
-        if (keys.length == 1) {
-            selector = keys[0];
-        } else {
-            selector = new RandomOpenaiEndpointSelector(keys);
-        }
+        this.selectors = keys;
     }
 
-    public OpenaiOptions withDefaults() {
-        initDefaults(this);
-        return this;
+    public OpenaiEndpointSelector buildSelector() {
+        if (selectors != null && selectors.length > 0) {
+            return new RandomOpenaiEndpointSelector(selectors);
+        }
+        if (keys != null && keys.length > 0) {
+            return new RandomOpenaiEndpointSelector(keys);
+        }
+        throw new IllegalArgumentException("keys or selectors must not be null");
     }
 
-    public static void initDefaults(OpenaiOptions config) {
-        if (config.selector == null) {
-            throw new NullPointerException("keySelector");
+    public HttpExchanger buildHttpExchanger() {
+        if (httpExchanger != null) {
+            return httpExchanger;
         }
-        if (config.jsonMapper == null) {
-            config.jsonMapper = new JacksonMapper();
+        if (okHttpClient == null) {
+            okHttpClient = new OkHttpClient();
         }
-        if (config.httpExchanger == null) {
-            config.httpExchanger = new OkHttp3HttpExchanger();
+        if (jsonMapper == null) {
+            jsonMapper = new JacksonMapper();
         }
+        return new OkHttp3HttpExchanger(okHttpClient, jsonMapper);
     }
 }

@@ -1,4 +1,4 @@
-package io.github.pdkst.models.openai.client;
+package io.github.pdkst.models.openai.azure;
 
 import io.github.pdkst.models.http.HttpExchanger;
 import io.github.pdkst.models.openai.api.audio.OpenaiAudio;
@@ -9,24 +9,24 @@ import io.github.pdkst.models.openai.api.finetuning.OpenaiFineTune;
 import io.github.pdkst.models.openai.api.image.OpenaiImages;
 import io.github.pdkst.models.openai.api.models.OpenaiModels;
 import io.github.pdkst.models.openai.api.moderation.OpenaiModeration;
-import lombok.Data;
+import io.github.pdkst.models.openai.client.OpenaiEndpointSelector;
+import io.github.pdkst.models.openai.client.OpenaiKeyInterceptor;
 
 /**
  * @author pdkst.zhang
- * @since 2023/12/30
+ * @since 2024/04/13
  */
-@Data
-public class OpenaiClient {
-    private OpenaiOptions options;
-    private HttpExchanger httpExchanger;
+public class AzureOpenaiClient {
+    private final AzureOpenaiOptions options;
+    private final HttpExchanger httpExchanger;
 
-    public OpenaiClient(OpenaiOptions options) {
+    public AzureOpenaiClient(AzureOpenaiOptions options) {
         this.options = options;
         this.httpExchanger = buildHttpExchanger(options);
     }
 
-    private HttpExchanger buildHttpExchanger(OpenaiOptions options) {
-        final OpenaiEndpointSelector keySelector = options.buildSelector();
+    private HttpExchanger buildHttpExchanger(AzureOpenaiOptions options) {
+        OpenaiEndpointSelector keySelector = options.buildSelector();
         HttpExchanger httpExchanger = options.buildHttpExchanger();
         httpExchanger.addInterceptor(new OpenaiKeyInterceptor(keySelector));
         return httpExchanger;

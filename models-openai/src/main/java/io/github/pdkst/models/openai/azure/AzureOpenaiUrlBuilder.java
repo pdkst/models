@@ -1,5 +1,6 @@
 package io.github.pdkst.models.openai.azure;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class AzureOpenaiUrlBuilder {
     private String schema = "https";
     private String resource = "";
@@ -20,6 +22,15 @@ public class AzureOpenaiUrlBuilder {
     public AzureOpenaiUrlBuilder(String resource, String deployment) {
         this.resource = resource;
         this.deployment = deployment;
+    }
+
+    public AzureOpenaiUrlBuilder(AzureOpenaiUrlBuilder other) {
+        this.schema = other.schema;
+        this.resource = other.resource;
+        this.domain = other.domain;
+        this.environment = other.environment;
+        this.deployment = other.deployment;
+        this.version = other.version;
     }
 
     public String build(String api) {

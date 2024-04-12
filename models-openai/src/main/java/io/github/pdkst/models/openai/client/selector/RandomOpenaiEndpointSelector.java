@@ -32,7 +32,7 @@ public class RandomOpenaiEndpointSelector implements OpenaiEndpointSelector {
     }
 
     public RandomOpenaiEndpointSelector(Random random, OpenaiEndpointSelector... selectors) {
-        this(new Random(), Arrays.asList(selectors));
+        this(random, Arrays.asList(selectors));
     }
 
     @Override
