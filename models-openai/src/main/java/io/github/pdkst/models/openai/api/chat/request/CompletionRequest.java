@@ -5,6 +5,7 @@ import io.github.pdkst.models.common.Request;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -189,4 +190,7 @@ public class CompletionRequest extends Request {
      */
     private String user;
 
+    public void messages(Message... messages) {
+        this.messages = Arrays.asList(messages);
+    }
 }

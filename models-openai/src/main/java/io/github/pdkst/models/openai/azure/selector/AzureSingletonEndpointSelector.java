@@ -21,6 +21,10 @@ public class AzureSingletonEndpointSelector implements OpenaiEndpointSelector {
         this(new AzureOpenaiUrlBuilder(), new AzureOpenaiCredentials(subscriptionKey));
     }
 
+    public AzureSingletonEndpointSelector(String header, String subscriptionKey) {
+        this(new AzureOpenaiUrlBuilder(), new AzureOpenaiCredentials(header, subscriptionKey));
+    }
+
     public AzureSingletonEndpointSelector(AzureOpenaiUrlBuilder builder, String subscriptionKey) {
         this(builder, new AzureOpenaiCredentials(subscriptionKey));
     }

@@ -1,5 +1,6 @@
 package io.github.pdkst.models.openai.client;
 
+import io.github.pdkst.models.http.Credentials;
 import io.github.pdkst.models.http.Interceptor;
 import io.github.pdkst.models.http.request.HttpRequest;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,8 @@ public class OpenaiKeyInterceptor implements Interceptor {
         request.url(endpoint.getUrl());
         final Credentials credentials = endpoint.getCredentials();
         for (String header : credentials) {
-            final String euthanize = credentials.get(header);
-            request.header(header, euthanize);
+            final String authorized = credentials.get(header);
+            request.header(header, authorized);
         }
         return request;
     }

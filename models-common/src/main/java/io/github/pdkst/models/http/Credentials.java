@@ -1,4 +1,4 @@
-package io.github.pdkst.models.openai.client;
+package io.github.pdkst.models.http;
 
 /**
  * @author pdkst.zhang

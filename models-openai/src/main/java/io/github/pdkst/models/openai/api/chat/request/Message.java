@@ -48,6 +48,11 @@ public class Message {
      */
     private List<ToolCall> tool_calls;
 
+    public Message(String role, String content) {
+        this.role = role;
+        this.content = content;
+    }
+
     public static Message system(String content) {
         final Message message = new Message();
         message.setRole("system");

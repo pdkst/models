@@ -1,5 +1,6 @@
 package io.github.pdkst.models.openai.client;
 
+import io.github.pdkst.models.http.Credentials;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 

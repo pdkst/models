@@ -1,6 +1,6 @@
 package io.github.pdkst.models.openai.client.selector;
 
-import io.github.pdkst.models.openai.client.Credentials;
+import io.github.pdkst.models.http.Credentials;
 import io.github.pdkst.models.openai.client.OpenaiCredentials;
 import io.github.pdkst.models.openai.client.OpenaiEndpoint;
 import io.github.pdkst.models.openai.client.OpenaiEndpointSelector;

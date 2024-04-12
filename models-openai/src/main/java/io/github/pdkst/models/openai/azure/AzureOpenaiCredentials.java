@@ -1,6 +1,6 @@
 package io.github.pdkst.models.openai.azure;
 
-import io.github.pdkst.models.openai.client.Credentials;
+import io.github.pdkst.models.http.Credentials;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
