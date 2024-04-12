@@ -16,11 +16,11 @@ import java.util.List;
  */
 @Data
 @RequiredArgsConstructor
-public class SequenceOpenaiKeySelector implements OpenaiEndpointSelector {
+public class SequenceOpenaiEndpointSelector implements OpenaiEndpointSelector {
     private final List<OpenaiEndpointSelector> selectors;
     private volatile int index = 0;
 
-    public SequenceOpenaiKeySelector(String... keys) {
+    public SequenceOpenaiEndpointSelector(String... keys) {
         this(OpenaiEndpointSelector.buildSelectors(Arrays.asList(keys)));
     }
 

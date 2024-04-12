@@ -14,24 +14,24 @@ import java.util.Random;
  * @since 2024/01/18
  */
 @RequiredArgsConstructor
-public class RandomOpenaiKeySelector implements OpenaiEndpointSelector {
+public class RandomOpenaiEndpointSelector implements OpenaiEndpointSelector {
     private final Random random;
     @Delegate
     private final List<OpenaiEndpointSelector> selectors;
 
-    public RandomOpenaiKeySelector(String... keys) {
+    public RandomOpenaiEndpointSelector(String... keys) {
         this(Arrays.asList(keys));
     }
 
-    public RandomOpenaiKeySelector(List<String> keys) {
+    public RandomOpenaiEndpointSelector(List<String> keys) {
         this(new Random(), OpenaiEndpointSelector.buildSelectors(keys));
     }
 
-    public RandomOpenaiKeySelector(OpenaiEndpointSelector... selectors) {
+    public RandomOpenaiEndpointSelector(OpenaiEndpointSelector... selectors) {
         this(new Random(), selectors);
     }
 
-    public RandomOpenaiKeySelector(Random random, OpenaiEndpointSelector... selectors) {
+    public RandomOpenaiEndpointSelector(Random random, OpenaiEndpointSelector... selectors) {
         this(new Random(), Arrays.asList(selectors));
     }
 

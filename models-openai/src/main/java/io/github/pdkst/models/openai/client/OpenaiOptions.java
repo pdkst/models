@@ -4,7 +4,7 @@ import io.github.pdkst.models.http.HttpExchanger;
 import io.github.pdkst.models.http.clients.OkHttp3HttpExchanger;
 import io.github.pdkst.models.json.JacksonMapper;
 import io.github.pdkst.models.json.JsonMapper;
-import io.github.pdkst.models.openai.client.selector.RandomOpenaiKeySelector;
+import io.github.pdkst.models.openai.client.selector.RandomOpenaiEndpointSelector;
 import lombok.Data;
 
 /**
@@ -22,7 +22,7 @@ public class OpenaiOptions {
     }
 
     public void keys(String... keys) {
-        selector = new RandomOpenaiKeySelector(keys);
+        selector = new RandomOpenaiEndpointSelector(keys);
     }
 
     public void selectors(OpenaiEndpointSelector... keys) {
@@ -32,7 +32,7 @@ public class OpenaiOptions {
         if (keys.length == 1) {
             selector = keys[0];
         } else {
-            selector = new RandomOpenaiKeySelector(keys);
+            selector = new RandomOpenaiEndpointSelector(keys);
         }
     }
 

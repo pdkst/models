@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
  * @author pdkst.zhang
  * @since 2024/01/18
  */
-public class DefaultOpenaiUrlBuilderTest {
+public class OpenaiUrlBuilderTest {
 
     @Test
     public void build() {

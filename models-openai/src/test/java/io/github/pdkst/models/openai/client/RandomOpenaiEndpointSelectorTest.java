@@ -1,6 +1,6 @@
 package io.github.pdkst.models.openai.client;
 
-import io.github.pdkst.models.openai.client.selector.RandomOpenaiKeySelector;
+import io.github.pdkst.models.openai.client.selector.RandomOpenaiEndpointSelector;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,19 +13,19 @@ import static org.junit.Assert.assertNotNull;
  * @author pdkst.zhang
  * @since 2024/01/19
  */
-public class RandomOpenaiKeySelectorTest {
-    private RandomOpenaiKeySelector randomOpenaiKeySelector;
+public class RandomOpenaiEndpointSelectorTest {
+    private RandomOpenaiEndpointSelector randomOpenaiEndpointSelector;
     private List<String> keys = Arrays.asList("a", "b", "c");
 
     @Before
     public void setUp() {
         final OpenaiUrlBuilder builder = new OpenaiUrlBuilder();
-        randomOpenaiKeySelector = new RandomOpenaiKeySelector(keys);
+        randomOpenaiEndpointSelector = new RandomOpenaiEndpointSelector(keys);
     }
 
     @Test
     public void select() {
-        final OpenaiEndpoint endpoint = randomOpenaiKeySelector.select("/embeddings");
+        final OpenaiEndpoint endpoint = randomOpenaiEndpointSelector.select("/embeddings");
         assertNotNull(endpoint);
     }
 }
