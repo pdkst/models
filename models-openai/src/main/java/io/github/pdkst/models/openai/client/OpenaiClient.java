@@ -9,16 +9,16 @@ import io.github.pdkst.models.openai.api.finetuning.OpenaiFineTune;
 import io.github.pdkst.models.openai.api.image.OpenaiImages;
 import io.github.pdkst.models.openai.api.models.OpenaiModels;
 import io.github.pdkst.models.openai.api.moderation.OpenaiModeration;
-import lombok.Data;
+import lombok.Getter;
 
 /**
  * @author pdkst.zhang
  * @since 2023/12/30
  */
-@Data
+@Getter
 public class OpenaiClient {
-    private OpenaiOptions options;
-    private HttpExchanger httpExchanger;
+    private final OpenaiOptions options;
+    private final HttpExchanger httpExchanger;
 
     public OpenaiClient(OpenaiOptions options) {
         this.options = options;

@@ -5,7 +5,10 @@ import io.github.pdkst.models.http.clients.OkHttp3HttpExchanger;
 import io.github.pdkst.models.json.JacksonMapper;
 import io.github.pdkst.models.json.JsonMapper;
 import io.github.pdkst.models.openai.client.selector.RandomOpenaiEndpointSelector;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
 
 /**
@@ -13,6 +16,9 @@ import okhttp3.OkHttpClient;
  * @since 2023/11/02
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(fluent = true, chain = true)
 public class OpenaiOptions {
     private String[] keys;
     private OpenaiEndpointSelector[] selectors;
@@ -20,16 +26,21 @@ public class OpenaiOptions {
     private JsonMapper jsonMapper;
     private HttpExchanger httpExchanger;
 
-    public void keys(String... keys) {
+    public OpenaiOptions key(String... keys) {
         this.keys = keys;
+        return this;
     }
 
-    public void selectors(OpenaiEndpointSelector... keys) {
-        this.selectors = keys;
+    public OpenaiOptions selector(OpenaiEndpointSelector... selectors) {
+        this.selectors = selectors;
+        return this;
     }
 
     public OpenaiEndpointSelector buildSelector() {
-        if (selectors != null && selectors.length > 0) {
+        if (selectors != null && selectors.length == 1) {
+            return selectors[0];
+        }
+        if (selectors != null && selectors.length > 1) {
             return new RandomOpenaiEndpointSelector(selectors);
         }
         if (keys != null && keys.length > 0) {

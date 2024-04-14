@@ -11,11 +11,13 @@ import io.github.pdkst.models.openai.api.models.OpenaiModels;
 import io.github.pdkst.models.openai.api.moderation.OpenaiModeration;
 import io.github.pdkst.models.openai.client.OpenaiEndpointSelector;
 import io.github.pdkst.models.openai.client.OpenaiKeyInterceptor;
+import lombok.Getter;
 
 /**
  * @author pdkst.zhang
  * @since 2024/04/13
  */
+@Getter
 public class AzureOpenaiClient {
     private final AzureOpenaiOptions options;
     private final HttpExchanger httpExchanger;

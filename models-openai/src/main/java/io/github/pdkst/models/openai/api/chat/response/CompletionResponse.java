@@ -44,7 +44,10 @@ public class CompletionResponse extends Response {
     private Usage usage;
     /**
      * This fingerprint represents the backend configuration that the model runs with. Can be used in conjunction
-     * with the "seed" request parameter to understand when backend changes have been made that might impact determinism.
+     * with the "seed" request parameter to understand when backend changes have been made that might impact
+     * determinism.
      */
     private String system_fingerprint;
+
+    private Object error;
 }

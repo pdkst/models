@@ -11,11 +11,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 
 /**
  * @author pdkst.zhang
@@ -25,6 +27,7 @@ import java.util.Random;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Accessors(fluent = true, chain = true)
 public class AzureOpenaiOptions {
     private String schema = "https";
     private String resource;
@@ -33,7 +36,6 @@ public class AzureOpenaiOptions {
     private String deployment;
     private String version = "2023-12-01-preview";
     private String headerName = "api-key";
-    private String key;
     private String[] keys;
     private Random random;
     private OpenaiEndpointSelector[] selector;
@@ -41,12 +43,14 @@ public class AzureOpenaiOptions {
     private JsonMapper jsonMapper;
     private HttpExchanger httpExchanger;
 
-    public void selectors(OpenaiEndpointSelector... keys) {
+    public AzureOpenaiOptions selectors(OpenaiEndpointSelector... keys) {
         selector = keys;
+        return this;
     }
 
-    public void keys(String... keys) {
+    public AzureOpenaiOptions key(String... keys) {
         this.keys = keys;
+        return this;
     }
 
     public OpenaiEndpointSelector buildSelector() {
@@ -57,17 +61,23 @@ public class AzureOpenaiOptions {
         if (headerName != null) {
             headerName = "api-key";
         }
-        if (key != null) {
-            final AzureOpenaiCredentials credentials = new AzureOpenaiCredentials(headerName, key);
-            return new AzureSingletonEndpointSelector(urlBuilder, credentials);
-        }
         if (keys != null && keys.length > 0) {
             return buildKeys(urlBuilder);
         }
         throw new IllegalArgumentException("selector or key or keys must not be null");
     }
 
-    private RandomOpenaiEndpointSelector buildKeys(AzureOpenaiUrlBuilder urlBuilder) {
+    private OpenaiEndpointSelector buildKeys(AzureOpenaiUrlBuilder urlBuilder) {
+        if (keys == null || keys.length == 0) {
+            throw new IllegalArgumentException("keys must not be null");
+        }
+        if (headerName == null) {
+            throw new IllegalArgumentException("headerName must not be null");
+        }
+        if (keys.length == 1) {
+            final AzureOpenaiCredentials credentials = new AzureOpenaiCredentials(headerName, keys[0]);
+            return new AzureSingletonEndpointSelector(urlBuilder, credentials);
+        }
         final List<OpenaiEndpointSelector> selectors = new ArrayList<>();
         for (String key : keys) {
             final AzureOpenaiCredentials credentials = new AzureOpenaiCredentials(headerName, key);
