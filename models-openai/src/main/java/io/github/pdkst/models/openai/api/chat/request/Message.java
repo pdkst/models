@@ -25,7 +25,7 @@ public class Message {
      * {@code content} is required for all messages,
      * and may be null for assistant messages with function calls.
      */
-    private String content;
+    private Object content;
     /**
      * The name of the author of this message.
      * {@code name} is required if role is {@code function},
@@ -87,6 +87,13 @@ public class Message {
         message.setRole("tool");
         message.setTool_call_id(toolCallId);
         message.setContent(content);
+        return message;
+    }
+
+    public static Message contentParts(ContentPart... contentParts) {
+        final Message message = new Message();
+        message.setRole("user");
+        message.setContent(contentParts);
         return message;
     }
 }
