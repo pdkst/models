@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/10/29
  */
 public class CompletionRequestTest {

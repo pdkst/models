@@ -12,7 +12,7 @@ import io.github.pdkst.models.openai.api.moderation.OpenaiModeration;
 import lombok.Getter;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/12/30
  */
 @Getter

@@ -14,7 +14,7 @@ import java.util.Map;
  * <p>
  * Creates a model response for the given chat conversation.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @see <a href="https://platform.openai.com/docs/api-reference/chat/create">Create chat completion</a>
  * @since 2023/07/30
  */

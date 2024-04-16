@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 /**
  * 标记为beta版本，仅标记
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/01/19
  */
 @Inherited

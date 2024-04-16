@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/01/18
  */
 public class OpenaiUrlBuilderTest {

@@ -14,7 +14,7 @@ import java.util.List;
  * <p>
  * Related guide: <a href="https://platform.openai.com/docs/guides/moderation">Moderations</a>
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/11/03
  */
 @RequiredArgsConstructor

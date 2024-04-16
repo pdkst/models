@@ -8,7 +8,7 @@ import java.util.List;
  * List of the most likely tokens and their log probability, at this token position.
  * In rare cases, there may be fewer than the number of requested top_logprobs returned.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/12/30
  */
 @Data

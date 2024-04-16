@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
  * You can refer to the <a href="https://platform.openai.com/docs/models">Models</a>
  * documentation to understand what models are available and the differences between them.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/11/03
  */
 @RequiredArgsConstructor

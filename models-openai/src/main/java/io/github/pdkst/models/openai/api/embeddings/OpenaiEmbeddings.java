@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * Get a vector representation of a given input that can be easily consumed by machine learning models and algorithms.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @see <a href="https://platform.openai.com/docs/api-reference/embeddings">Embeddings</a>
  * @since 2023/11/01
  */

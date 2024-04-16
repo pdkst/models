@@ -14,7 +14,7 @@ import java.util.Collections;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/01/18
  */
 public class OpenaiChatCompletionTest {

@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * The fine_tuning.job.checkpoint object represents a model checkpoint for a fine-tuning job that is ready to use.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @see
  * <a href="https://platform.openai.com/docs/api-reference/fine-tuning/checkpoint-object">Fine-tuning job checkpoint object</a>
  * @since 2024/04/07

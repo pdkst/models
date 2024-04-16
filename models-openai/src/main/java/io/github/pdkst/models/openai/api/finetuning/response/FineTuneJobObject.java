@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * The fine_tuning.job object represents a fine-tuning job that has been created through the API.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/04/07
  */
 @Data

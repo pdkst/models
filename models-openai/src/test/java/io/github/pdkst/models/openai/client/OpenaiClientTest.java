@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/04/12
  */
 public class OpenaiClientTest {

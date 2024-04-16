@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * select openai keys
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/12/30
  */
 public interface OpenaiEndpointSelector {

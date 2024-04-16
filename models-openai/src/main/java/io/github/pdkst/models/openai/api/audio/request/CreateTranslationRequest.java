@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * Translates audio into English.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @see <a href="https://platform.openai.com/docs/api-reference/audio/createTranslation">Create Translation</a>
  * @since 2024/04/05
  */

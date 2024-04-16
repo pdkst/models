@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * CompletionRequest practical wrapper.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/10/29
  */
 @Data

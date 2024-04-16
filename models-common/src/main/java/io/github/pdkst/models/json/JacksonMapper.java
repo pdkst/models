@@ -6,7 +6,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/10/29
  */
 public class JacksonMapper implements JsonMapper {

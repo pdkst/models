@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/10/29
  */
 @Getter

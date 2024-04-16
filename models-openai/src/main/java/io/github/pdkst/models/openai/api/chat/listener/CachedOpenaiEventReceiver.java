@@ -19,7 +19,7 @@ import static org.apache.commons.lang3.StringUtils.join;
 /**
  * 缓存openai内容
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/03/12
  */
 @Slf4j

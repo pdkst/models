@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/12/30
  */
 public interface HttpInputSource {

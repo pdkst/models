@@ -9,7 +9,7 @@ import java.util.List;
  * <p>
  * Related guide: <a href="https://platform.openai.com/docs/guides/embeddings">Embeddings</a>
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @see <a href="https://platform.openai.com/docs/api-reference/embeddings/object">The embedding object</a>
  * @since 2023/11/01
  */

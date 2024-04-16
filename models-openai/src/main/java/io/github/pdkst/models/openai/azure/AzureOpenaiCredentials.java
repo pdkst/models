@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/04/11
  */
 public class AzureOpenaiCredentials implements Credentials {

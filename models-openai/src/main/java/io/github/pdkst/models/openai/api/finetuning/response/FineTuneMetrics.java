@@ -3,7 +3,7 @@ package io.github.pdkst.models.openai.api.finetuning.response;
 import lombok.Data;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @see
  * <a href="https://platform.openai.com/docs/api-reference/fine-tuning/checkpoint-object#fine-tuning/checkpoint-object-metrics">Metrics</a>
  * @since 2024/04/07

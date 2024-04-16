@@ -8,7 +8,7 @@ import io.github.pdkst.models.openai.client.OpenaiUrlBuilder;
 import lombok.RequiredArgsConstructor;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/12/30
  */
 @RequiredArgsConstructor

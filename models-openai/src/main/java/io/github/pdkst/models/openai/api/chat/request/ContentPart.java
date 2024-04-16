@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @see
  * <a href="https://platform.openai.com/docs/guides/vision/low-or-high-fidelity-image-understanding">Vision guide</a>.
  * @since 2024/04/14

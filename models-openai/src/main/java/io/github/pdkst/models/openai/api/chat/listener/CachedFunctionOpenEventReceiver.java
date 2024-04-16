@@ -15,7 +15,7 @@ import java.util.Map;
 import static org.apache.commons.collections4.CollectionUtils.isEmpty;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/04/05
  */
 public abstract class CachedFunctionOpenEventReceiver extends CachedOpenaiEventReceiver {

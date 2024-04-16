@@ -14,7 +14,7 @@ import io.github.pdkst.models.openai.client.OpenaiKeyInterceptor;
 import lombok.Getter;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/04/13
  */
 @Getter

@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 顺序选择器
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/01/19
  */
 @Data

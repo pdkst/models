@@ -4,7 +4,7 @@ import io.github.pdkst.models.http.Credentials;
 import lombok.Data;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/01/18
  */
 @Data

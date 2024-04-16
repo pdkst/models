@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Log probability information for the choice.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/12/30
  */
 @Data

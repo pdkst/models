@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/03/21
  */
 @Inherited

@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/01/19
  */
 public class RandomOpenaiEndpointSelectorTest {

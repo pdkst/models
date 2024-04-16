@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
  * partially cut off if finish_reason="length", which indicates the generation exceeded max_tokens or the
  * conversation exceeded the max context length.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/12/30
  */
 @Data

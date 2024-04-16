@@ -1,7 +1,7 @@
 package io.github.pdkst.models.http;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/04/11
  */
 public interface Credentials extends Iterable<String> {

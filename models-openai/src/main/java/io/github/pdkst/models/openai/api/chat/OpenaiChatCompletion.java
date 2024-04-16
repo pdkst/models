@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
  * and can also return the probabilities of alternative tokens at each position.
  * We recommend most users use our Chat completions API. Learn more
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @see <a href="https://platform.openai.com/docs/api-reference/completions">Completions</a>
  * @see <a href="https://platform.openai.com/docs/guides/gpt/completions-api">Completions API Guide</a>
  * @since 2023/10/29

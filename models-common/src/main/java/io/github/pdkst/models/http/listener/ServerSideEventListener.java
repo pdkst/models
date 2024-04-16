@@ -4,7 +4,7 @@ import io.github.pdkst.models.http.HttpResponse;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/10/29
  */
 public interface ServerSideEventListener {

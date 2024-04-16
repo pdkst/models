@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/01/01
  */
 @Slf4j

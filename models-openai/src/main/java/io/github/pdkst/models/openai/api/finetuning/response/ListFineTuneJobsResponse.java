@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * A list of paginated fine-tuning job objects.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/04/07
  */
 @Data

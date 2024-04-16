@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.Delegate;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/04/11
  */
 @RequiredArgsConstructor
