@@ -124,4 +124,9 @@ public class HttpRequest {
         this.formInputSource = new FileInputSource(file);
         return this;
     }
+
+    public HttpRequest pathVariable(String key, String value) {
+        pathVariables.put(key, value);
+        return this;
+    }
 }

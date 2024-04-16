@@ -2,6 +2,7 @@ package io.github.pdkst.models.openai.client;
 
 import io.github.pdkst.models.http.HttpExchanger;
 import io.github.pdkst.models.openai.api.audio.OpenaiAudio;
+import io.github.pdkst.models.openai.api.batch.OpenaiBatch;
 import io.github.pdkst.models.openai.api.chat.OpenaiChatCompletion;
 import io.github.pdkst.models.openai.api.embeddings.OpenaiEmbeddings;
 import io.github.pdkst.models.openai.api.files.OpenaiFiles;
@@ -34,6 +35,10 @@ public class OpenaiClient {
 
     public OpenaiAudio audio() {
         return new OpenaiAudio(httpExchanger);
+    }
+
+    public OpenaiBatch batch() {
+        return new OpenaiBatch(httpExchanger);
     }
 
     public OpenaiChatCompletion chat() {
