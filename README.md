@@ -26,7 +26,15 @@ To use the OpenAI Java API Client, you first need to create an instance of the `
 Here's an example of how to use the `OpenAI` class to generate text using the model:
 
 ```java
-
+final OpenaiOptions options = new OpenaiOptions();
+options.key("sk-**********");
+OpenaiClient client = new OpenaiClient(options);
+final CompletionRequest request = new CompletionRequest();
+request.setModel("gpt-3.5-turbo");
+request.setStream(false);
+request.messages(Message.user("hello"));
+final CompletionResponse response = client.chat().completion(request);
+assertNotNull(response);
 ```
 
 In this example, we create an instance of the `OpenAI` class with our API key, define a `CompletionRequest` object with the desired parameters, and use the `completion.create()` method to generate text using the model. Finally, we print the generated text to the console.
