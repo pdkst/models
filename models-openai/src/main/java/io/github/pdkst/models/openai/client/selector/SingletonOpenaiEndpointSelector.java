@@ -6,7 +6,6 @@ import io.github.pdkst.models.openai.client.OpenaiEndpoint;
 import io.github.pdkst.models.openai.client.OpenaiEndpointSelector;
 import io.github.pdkst.models.openai.client.OpenaiUrlBuilder;
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.Delegate;
 
 /**
  * @author pdkst.zhang
@@ -15,12 +14,14 @@ import lombok.experimental.Delegate;
 @RequiredArgsConstructor
 public class SingletonOpenaiEndpointSelector implements OpenaiEndpointSelector {
     private final Credentials credentials;
-    @Delegate
     private final OpenaiUrlBuilder builder;
 
     public SingletonOpenaiEndpointSelector(String key) {
-        this.credentials = new OpenaiCredentials(key);
-        this.builder = new OpenaiUrlBuilder();
+        this(key, new OpenaiUrlBuilder());
+    }
+
+    public SingletonOpenaiEndpointSelector(String key, OpenaiUrlBuilder urlBuilder) {
+        this(new OpenaiCredentials(key), urlBuilder);
     }
 
     @Override
