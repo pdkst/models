@@ -10,7 +10,7 @@ import java.io.File;
  * Currently, the size of all the files uploaded by one organization can be up to 1 GB.
  * Please contact us if you need to increase the storage limit.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/11/02
  */
 @Data

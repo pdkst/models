@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * A list of embedding objects.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/11/01
  */
 @Data

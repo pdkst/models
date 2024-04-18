@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/10/29
  */
 @RequiredArgsConstructor
@@ -62,6 +62,7 @@ public class OkHttp3HttpExchanger extends AbstractHttpExchanger {
         final RequestBody body = buildBody(request);
         final Request.Builder builder = new Request.Builder()
                 .url(url)
+                .header("Accept", "*/*")
                 .method(request.method().name(), body);
         appendHeader(builder, request);
         return builder.build();

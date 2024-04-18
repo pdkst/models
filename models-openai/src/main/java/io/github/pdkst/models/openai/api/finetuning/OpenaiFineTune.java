@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
  * <p>
  * Related guide: <a href="https://platform.openai.com/docs/guides/fine-tuning">Fine-tune models</a>
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @see <a href="https://platform.openai.com/docs/api-reference/fine-tuning">Fine-tuning API documentation</a>
  * @since 2024/04/07
  */

@@ -3,7 +3,7 @@ package io.github.pdkst.models.openai.api.audio.response;
 import lombok.Data;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/04/05
  */
 @Data

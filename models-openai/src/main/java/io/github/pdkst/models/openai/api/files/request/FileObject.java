@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 /**
  * The File object represents a document that has been uploaded to OpenAI.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/11/02
  */
 @Data

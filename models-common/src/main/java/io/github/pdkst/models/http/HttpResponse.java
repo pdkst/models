@@ -3,7 +3,7 @@ package io.github.pdkst.models.http;
 import java.io.InputStream;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/10/29
  */
 public interface HttpResponse {

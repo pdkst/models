@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * http request object
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/10/29
  */
 @Data
@@ -115,13 +115,18 @@ public class HttpRequest {
         return this;
     }
 
-    public HttpRequest header(String key, String value) {
-        header.put(key, value);
+    public HttpRequest header(String key, Object value) {
+        header.put(key, ObjectUtils.defaultIfNull(value, "").toString());
         return this;
     }
 
     public HttpRequest file(File file) {
         this.formInputSource = new FileInputSource(file);
+        return this;
+    }
+
+    public HttpRequest pathVariable(String key, String value) {
+        pathVariables.put(key, value);
         return this;
     }
 }

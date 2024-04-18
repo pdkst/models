@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * Transcribes audio into the input language.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/04/05
  */
 @Data

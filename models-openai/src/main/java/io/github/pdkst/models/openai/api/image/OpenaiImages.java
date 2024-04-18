@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * Creates an image given a prompt.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @see <a href="https://platform.openai.com/docs/api-reference/images">Images</a>
  * @since 2023/11/02
  */

@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * Represents a verbose json transcription response returned by model, based on the provided input.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @see <a href="https://platform.openai.com/docs/api-reference/audio/verbose-json-object">The transcription object</a>
  * @since 2024/04/05
  */

@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * Creates an image given a prompt.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/11/02
  */
 @Data

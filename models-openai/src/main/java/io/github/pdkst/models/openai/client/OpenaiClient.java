@@ -2,6 +2,7 @@ package io.github.pdkst.models.openai.client;
 
 import io.github.pdkst.models.http.HttpExchanger;
 import io.github.pdkst.models.openai.api.audio.OpenaiAudio;
+import io.github.pdkst.models.openai.api.batch.OpenaiBatch;
 import io.github.pdkst.models.openai.api.chat.OpenaiChatCompletion;
 import io.github.pdkst.models.openai.api.embeddings.OpenaiEmbeddings;
 import io.github.pdkst.models.openai.api.files.OpenaiFiles;
@@ -9,26 +10,25 @@ import io.github.pdkst.models.openai.api.finetuning.OpenaiFineTune;
 import io.github.pdkst.models.openai.api.image.OpenaiImages;
 import io.github.pdkst.models.openai.api.models.OpenaiModels;
 import io.github.pdkst.models.openai.api.moderation.OpenaiModeration;
-import lombok.Data;
+import lombok.Getter;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/12/30
  */
-@Data
+@Getter
 public class OpenaiClient {
-    private OpenaiOptions options;
-    private HttpExchanger httpExchanger;
+    private final OpenaiOptions options;
+    private final HttpExchanger httpExchanger;
 
     public OpenaiClient(OpenaiOptions options) {
         this.options = options;
         this.httpExchanger = buildHttpExchanger(options);
     }
 
-    private HttpExchanger buildHttpExchanger(OpenaiOptions config) {
-        final OpenaiOptions openaiOptions = this.options.withDefaults();
-        final OpenaiKeySelector keySelector = config.getKeySelector();
-        HttpExchanger httpExchanger = openaiOptions.getHttpExchanger();
+    private HttpExchanger buildHttpExchanger(OpenaiOptions options) {
+        final OpenaiEndpointSelector keySelector = options.buildSelector();
+        HttpExchanger httpExchanger = options.buildHttpExchanger();
         httpExchanger.addInterceptor(new OpenaiKeyInterceptor(keySelector));
         return httpExchanger;
     }
@@ -37,7 +37,11 @@ public class OpenaiClient {
         return new OpenaiAudio(httpExchanger);
     }
 
-    public OpenaiChatCompletion chatCompletion() {
+    public OpenaiBatch batch() {
+        return new OpenaiBatch(httpExchanger);
+    }
+
+    public OpenaiChatCompletion chat() {
         return new OpenaiChatCompletion(httpExchanger);
     }
 

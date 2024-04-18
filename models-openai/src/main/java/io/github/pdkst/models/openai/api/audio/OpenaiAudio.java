@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
  * <p>
  * Related guide: <a href="https://platform.openai.com/docs/guides/speech-to-text">Speech to text</a>
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @see <a href="https://platform.openai.com/docs/api-reference/audio">Audio API</a>
  * @since 2024/04/05
  */

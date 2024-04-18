@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * The hyperparameters used for the fine-tuning job.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/04/07
  */
 @Data

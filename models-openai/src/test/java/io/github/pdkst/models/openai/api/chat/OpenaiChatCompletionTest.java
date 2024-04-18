@@ -1,20 +1,20 @@
 package io.github.pdkst.models.openai.api.chat;
 
 import io.github.pdkst.models.http.clients.OkHttp3HttpExchanger;
-import io.github.pdkst.models.openai.client.OpenaiKeyInterceptor;
-import io.github.pdkst.models.openai.client.selector.SingletonOpenaiKeySelector;
 import io.github.pdkst.models.openai.api.chat.request.CompletionRequest;
 import io.github.pdkst.models.openai.api.chat.request.Message;
 import io.github.pdkst.models.openai.api.chat.response.CompletionResponse;
+import io.github.pdkst.models.openai.client.OpenaiKeyInterceptor;
+import io.github.pdkst.models.openai.client.selector.SingletonOpenaiEndpointSelector;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Collections;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/01/18
  */
 public class OpenaiChatCompletionTest {
@@ -22,7 +22,7 @@ public class OpenaiChatCompletionTest {
 
     @Before
     public void init() {
-        final SingletonOpenaiKeySelector selector = new SingletonOpenaiKeySelector("");
+        final SingletonOpenaiEndpointSelector selector = new SingletonOpenaiEndpointSelector("");
         selector.setDomain("localhost:8080");
         final OkHttp3HttpExchanger delegate = new OkHttp3HttpExchanger();
         delegate.addInterceptor(new OpenaiKeyInterceptor(selector));

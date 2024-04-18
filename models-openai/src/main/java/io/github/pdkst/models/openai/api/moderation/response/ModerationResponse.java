@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Represents policy compliance report by OpenAI's content moderation model against a given input.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/11/03
  */
 @Data

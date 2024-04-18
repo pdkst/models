@@ -18,7 +18,7 @@ import java.io.InputStream;
  * that can be used with features like
  * <a href="https://platform.openai.com/docs/api-reference/fine-tuning">fine-tuning</a> .
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/11/02
  */
 @RequiredArgsConstructor

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Returns a list of files that belong to the user's organization.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/11/02
  */
 @Data

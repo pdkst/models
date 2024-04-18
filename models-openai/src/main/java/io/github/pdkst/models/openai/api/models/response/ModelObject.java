@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * Describes an OpenAI model offering that can be used with the API.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/11/03
  */
 @Data

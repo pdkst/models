@@ -5,6 +5,7 @@ import io.github.pdkst.models.common.Request;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ import java.util.Map;
  * <p>
  * Creates a model response for the given chat conversation.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @see <a href="https://platform.openai.com/docs/api-reference/chat/create">Create chat completion</a>
  * @since 2023/07/30
  */
@@ -189,4 +190,7 @@ public class CompletionRequest extends Request {
      */
     private String user;
 
+    public void messages(Message... messages) {
+        this.messages = Arrays.asList(messages);
+    }
 }

@@ -4,7 +4,7 @@ import io.github.pdkst.models.http.listener.ServerSideEventListener;
 import io.github.pdkst.models.http.request.HttpRequest;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/11/18
  */
 public interface HttpExchanger {

@@ -4,7 +4,7 @@ import io.github.pdkst.models.annotation.Required;
 import lombok.Data;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/04/07
  */
 @Data

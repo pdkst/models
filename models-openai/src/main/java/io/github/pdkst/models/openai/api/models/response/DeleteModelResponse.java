@@ -4,7 +4,7 @@ import io.github.pdkst.models.common.Response;
 import lombok.Data;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/11/02
  */
 @Data

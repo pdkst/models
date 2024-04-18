@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
  * <p>
  * "none" is the default when no functions are present. "auto" is the default if functions are present.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/10/29
  */
 @Data

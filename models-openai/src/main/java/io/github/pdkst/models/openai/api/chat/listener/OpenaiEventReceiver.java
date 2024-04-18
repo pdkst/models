@@ -4,7 +4,7 @@ import io.github.pdkst.models.openai.api.chat.response.CompletionChunkResponse;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2024/03/12
  */
 public interface OpenaiEventReceiver {

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * message content tokens with log probability information.
  *
- * @author pdkst.zhang
+ * @author pdkst
  * @since 2023/12/30
  */
 @Data
