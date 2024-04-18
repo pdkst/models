@@ -2,4 +2,4 @@ server:
   port: 8080
 spring:
   application:
-    name: openai-embedded-server
+    name: model-server

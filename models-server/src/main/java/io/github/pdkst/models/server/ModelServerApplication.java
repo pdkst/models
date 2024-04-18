@@ -1,4 +1,4 @@
-package io.github.pdkst.models.openai.sample;
+package io.github.pdkst.models.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 2023/12/31
  */
 @SpringBootApplication
-public class OpenaiSampleApplication {
+public class ModelServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OpenaiSampleApplication.class, args);
+        SpringApplication.run(ModelServerApplication.class, args);
     }
 }

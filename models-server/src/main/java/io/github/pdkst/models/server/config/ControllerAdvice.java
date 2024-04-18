@@ -1,4 +1,4 @@
-package io.github.pdkst.models.openai.sample.config;
+package io.github.pdkst.models.server.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpRequest;
