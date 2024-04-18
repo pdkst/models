@@ -115,8 +115,8 @@ public class HttpRequest {
         return this;
     }
 
-    public HttpRequest header(String key, String value) {
-        header.put(key, value);
+    public HttpRequest header(String key, Object value) {
+        header.put(key, ObjectUtils.defaultIfNull(value, "").toString());
         return this;
     }
 
