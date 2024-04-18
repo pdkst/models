@@ -37,7 +37,7 @@ final CompletionResponse response = client.chat().completion(request);
 assertNotNull(response);
 ```
 
-In this example, we create an instance of the `OpenAI` class with our API key, define a `CompletionRequest` object with the desired parameters, and use the `completion.create()` method to generate text using the model. Finally, we print the generated text to the console.
+In this example, we create an instance of the `OpenAI` class with our API key, define a `CompletionRequest` object with the desired parameters, and use the `client.chat().completion()` method to generate text using the model. Finally, we print the generated text to the console.
 
 For more information on the available methods and parameters, please refer to the [OpenAI API documentation](https://beta.openai.com/docs/).
 
