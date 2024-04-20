@@ -4,6 +4,7 @@ import io.github.pdkst.models.annotation.Required;
 import io.github.pdkst.models.common.Request;
 import lombok.Data;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -31,7 +32,8 @@ public class EmbeddingsRequest extends Request {
      * ID of the model to use. You can use the
      * <a href="https://platform.openai.com/docs/api-reference/models/list">List models</a>
      * API to see all of your available models,
-     * or see our <a href="https://platform.openai.com/docs/models/overview">Model overview</a> for descriptions of them.
+     * or see our <a href="https://platform.openai.com/docs/models/overview">Model overview</a>
+     * for descriptions of them.
      */
     @Required
     private String model;
@@ -48,4 +50,8 @@ public class EmbeddingsRequest extends Request {
      * <a href="https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids">Learn more</a>.
      */
     private String user;
+
+    public void setInput(String input) {
+        this.input = Collections.singletonList(input);
+    }
 }
