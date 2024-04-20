@@ -25,7 +25,6 @@ import java.io.InputStreamReader;
 @Service
 @RequiredArgsConstructor
 public class FileOpenaiChatCompletion {
-    private final JsonLineFileResolver resolver = new JsonLineFileResolver("/out/chat/stream_chat_completion.jsonl");
     private final JacksonMapper mapper = new JacksonMapper();
 
     public Object completion(CompletionRequest request) throws IOException {
@@ -61,6 +60,8 @@ public class FileOpenaiChatCompletion {
 
     public void completionStream(CompletionRequest request,
                                  StreamEventListener listener) throws IOException {
+        final JsonLineFileResolver resolver = new JsonLineFileResolver(
+                "/out/chat/stream_chat_completion.jsonl");
         resolver.resolve(listener);
     }
 }
