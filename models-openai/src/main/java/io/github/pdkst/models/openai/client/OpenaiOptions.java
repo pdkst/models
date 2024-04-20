@@ -11,7 +11,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
+import org.apache.commons.lang3.ObjectUtils;
 
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -28,12 +31,21 @@ public class OpenaiOptions {
     private String schema = "https";
     private String domain = "api.openai.com";
     private String version = "v1";
+    private Proxy.Type proxyType = Proxy.Type.HTTP;
+    private String proxyHost;
+    private Integer proxyPort;
     private String[] keys;
     private OpenaiEndpointSelector[] selectors;
     private Random random;
     private OkHttpClient okHttpClient;
     private JsonMapper jsonMapper;
     private HttpExchanger httpExchanger;
+
+    public OpenaiOptions http(String domain) {
+        this.schema("http");
+        this.domain(domain);
+        return this;
+    }
 
     public OpenaiOptions key(String... keys) {
         this.keys = keys;
@@ -93,6 +105,12 @@ public class OpenaiOptions {
         }
         if (okHttpClient == null) {
             okHttpClient = new OkHttpClient();
+        }
+        if (proxyHost != null && proxyPort != null) {
+            final InetSocketAddress proxyAddress = new InetSocketAddress(proxyHost, proxyPort);
+            final Proxy.Type proxyType = ObjectUtils.defaultIfNull(this.proxyType, Proxy.Type.HTTP);
+            Proxy proxy = new Proxy(proxyType, proxyAddress);
+            okHttpClient = okHttpClient.newBuilder().proxy(proxy).build();
         }
         if (jsonMapper == null) {
             jsonMapper = new JacksonMapper();
