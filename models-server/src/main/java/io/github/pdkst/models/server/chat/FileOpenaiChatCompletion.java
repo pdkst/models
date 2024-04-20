@@ -22,7 +22,7 @@ import java.io.IOException;
 @Service
 @RequiredArgsConstructor
 public class FileOpenaiChatCompletion {
-    private final JacksonMapper mapper = new JacksonMapper();
+    private final JacksonMapper mapper = JacksonMapper.getInstance();
 
     public Object completion(CompletionRequest request) throws IOException {
         final Boolean stream = request.getStream();

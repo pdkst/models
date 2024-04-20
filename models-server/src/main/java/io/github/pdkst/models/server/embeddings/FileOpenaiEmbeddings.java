@@ -18,7 +18,7 @@ import java.io.IOException;
 @Service
 @RequiredArgsConstructor
 public class FileOpenaiEmbeddings {
-    private final JacksonMapper mapper = new JacksonMapper();
+    private final JacksonMapper mapper = JacksonMapper.getInstance();
 
     public EmbeddingsResponse embeddings(EmbeddingsRequest request) throws IOException {
         final JsonFileResolver resolver = new JsonFileResolver("/out/embeddings/example.json", mapper);

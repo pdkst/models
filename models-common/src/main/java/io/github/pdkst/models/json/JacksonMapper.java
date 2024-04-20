@@ -12,6 +12,7 @@ import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKN
  * @since 2023/10/29
  */
 public class JacksonMapper implements JsonMapper {
+    private static final JacksonMapper INSTANCE = new JacksonMapper();
     private final ObjectMapper objectMapper;
 
     public JacksonMapper() {
@@ -37,5 +38,9 @@ public class JacksonMapper implements JsonMapper {
     @Override
     public <T> T parse(String json, Class<T> tClass) throws IOException {
         return objectMapper.readValue(json, tClass);
+    }
+
+    public static JacksonMapper getInstance() {
+        return INSTANCE;
     }
 }
