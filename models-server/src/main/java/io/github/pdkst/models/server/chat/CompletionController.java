@@ -22,7 +22,7 @@ public class CompletionController {
         final SseEmitter emitter = new SseEmitter();
 
         try (final JsonLineFileResolver resolver
-                     = new JsonLineFileResolver("/out/chat/stream_chat_completion.txt")) {
+                     = new JsonLineFileResolver("/out/chat/stream_chat_completion.jsonl")) {
             resolver.resolve(emitter);
         }
         return emitter;
