@@ -4,6 +4,8 @@ import io.github.pdkst.models.http.listener.StreamEventListener;
 import io.github.pdkst.models.json.JacksonMapper;
 import io.github.pdkst.models.openai.api.chat.request.CompletionRequest;
 import io.github.pdkst.models.openai.api.chat.response.CompletionResponse;
+import io.github.pdkst.models.server.common.JsonFileResolver;
+import io.github.pdkst.models.server.common.JsonLineFileResolver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.BooleanUtils;

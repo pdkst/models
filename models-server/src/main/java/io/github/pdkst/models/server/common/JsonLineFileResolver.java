@@ -1,4 +1,4 @@
-package io.github.pdkst.models.server.chat;
+package io.github.pdkst.models.server.common;
 
 import io.github.pdkst.models.http.listener.StreamEventListener;
 import lombok.RequiredArgsConstructor;
