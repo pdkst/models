@@ -1,7 +1,8 @@
 package io.github.pdkst.models.server.config;
 
+import io.github.pdkst.models.server.common.ErrorResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ControllerAdvice {
     @ExceptionHandler(Exception.class)
-    public String exceptionHandler(Exception e, HttpRequest request) {
-        log.info("exceptionHandler => handle exception;url={}", request.getURI(), e);
-        return e.getMessage();
+    public ErrorResponse exceptionHandler(Exception e, HttpServletRequest request) {
+        log.error("exceptionHandler => handle exception; url={}", request.getRequestURI(), e);
+        return ErrorResponse.of("server_error", e.getMessage());
     }
 }

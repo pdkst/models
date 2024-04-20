@@ -5,6 +5,7 @@ import io.github.pdkst.models.openai.api.chat.request.CompletionRequest;
 import io.github.pdkst.models.openai.api.chat.request.Message;
 import io.github.pdkst.models.openai.api.chat.response.CompletionResponse;
 import io.github.pdkst.models.openai.client.OpenaiKeyInterceptor;
+import io.github.pdkst.models.openai.client.OpenaiUrlBuilder;
 import io.github.pdkst.models.openai.client.selector.SingletonOpenaiEndpointSelector;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,8 +23,9 @@ public class OpenaiChatCompletionTest {
 
     @Before
     public void init() {
-        final SingletonOpenaiEndpointSelector selector = new SingletonOpenaiEndpointSelector("");
-        selector.setDomain("localhost:8080");
+        final OpenaiUrlBuilder urlBuilder = new OpenaiUrlBuilder();
+        urlBuilder.setDomain("localhost:8080");
+        final SingletonOpenaiEndpointSelector selector = new SingletonOpenaiEndpointSelector("", urlBuilder);
         final OkHttp3HttpExchanger delegate = new OkHttp3HttpExchanger();
         delegate.addInterceptor(new OpenaiKeyInterceptor(selector));
         completion = new OpenaiChatCompletion(delegate);
