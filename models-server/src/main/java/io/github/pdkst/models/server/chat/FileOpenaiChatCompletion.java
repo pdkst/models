@@ -7,15 +7,10 @@ import io.github.pdkst.models.openai.api.chat.response.CompletionResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.BooleanUtils;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 /**
  * @author pdkst
@@ -39,29 +34,13 @@ public class FileOpenaiChatCompletion {
     }
 
     public CompletionResponse completionObject(CompletionRequest request) throws IOException {
-        final InputStream stream = JsonLineFileResolver.class.getResourceAsStream(
-                "/out/chat/chat_completion_example.json");
-        if (stream == null) {
-            throw new RuntimeException("not found");
-        }
-        try (BufferedInputStream bis = new BufferedInputStream(stream);
-             final InputStreamReader reader = new InputStreamReader(bis);
-             BufferedReader bufferedReader = new BufferedReader(reader)) {
-            StringBuffer sb = new StringBuffer();
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                sb.append(line);
-            }
-            return mapper.parse(sb.toString(), CompletionResponse.class);
-        } finally {
-            IOUtils.closeQuietly(stream);
-        }
+        final JsonFileResolver resolver = new JsonFileResolver("/out/chat/chat_completion_example.json", mapper);
+        return resolver.resolve(CompletionResponse.class);
     }
 
     public void completionStream(CompletionRequest request,
                                  StreamEventListener listener) throws IOException {
-        final JsonLineFileResolver resolver = new JsonLineFileResolver(
-                "/out/chat/stream_chat_completion.jsonl");
+        final JsonLineFileResolver resolver = new JsonLineFileResolver("/out/chat/stream_chat_completion.jsonl");
         resolver.resolve(listener);
     }
 }
