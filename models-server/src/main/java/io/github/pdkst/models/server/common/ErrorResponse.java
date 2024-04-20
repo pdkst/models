@@ -1,5 +1,6 @@
 package io.github.pdkst.models.server.common;
 
+import io.github.pdkst.models.openai.api.common.Error;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,12 @@ public class ErrorResponse {
     private Error error;
 
     public static ErrorResponse of(ErrorCode errorCode) {
-        return of(new Error(errorCode));
+        final Error error = new Error();
+        error.setCode(errorCode.name());
+        error.setType(errorCode.getType());
+        error.setMessage(errorCode.getMessage());
+        error.setParam(null);
+        return of(error);
     }
 
     public static ErrorResponse of(String code, String message) {

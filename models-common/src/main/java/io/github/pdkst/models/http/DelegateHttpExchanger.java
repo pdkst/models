@@ -1,6 +1,6 @@
 package io.github.pdkst.models.http;
 
-import io.github.pdkst.models.http.listener.ServerSideEventListener;
+import io.github.pdkst.models.http.listener.StreamEventListener;
 import io.github.pdkst.models.http.request.HttpRequest;
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +18,7 @@ public class DelegateHttpExchanger implements HttpExchanger {
     }
 
     @Override
-    public void serverSideEvent(HttpRequest request, ServerSideEventListener listener) throws Exception {
+    public void serverSideEvent(HttpRequest request, StreamEventListener listener) throws Exception {
         delegate.serverSideEvent(request, listener);
     }
 

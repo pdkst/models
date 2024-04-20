@@ -1,7 +1,7 @@
 package io.github.pdkst.models.http.clients;
 
 import io.github.pdkst.models.json.JsonMapper;
-import io.github.pdkst.models.http.listener.ServerSideEventListener;
+import io.github.pdkst.models.http.listener.StreamEventListener;
 import lombok.RequiredArgsConstructor;
 import okhttp3.Response;
 import okhttp3.sse.EventSource;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
  */
 @RequiredArgsConstructor
 public class Okhttp3EventListenerAdapter extends EventSourceListener {
-    private final ServerSideEventListener target;
+    private final StreamEventListener target;
     private final JsonMapper jsonMapper;
 
     @Override

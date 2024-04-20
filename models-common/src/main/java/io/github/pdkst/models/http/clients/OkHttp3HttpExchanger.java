@@ -3,7 +3,7 @@ package io.github.pdkst.models.http.clients;
 import io.github.pdkst.models.http.AbstractHttpExchanger;
 import io.github.pdkst.models.http.HttpInputSource;
 import io.github.pdkst.models.http.HttpResponse;
-import io.github.pdkst.models.http.listener.ServerSideEventListener;
+import io.github.pdkst.models.http.listener.StreamEventListener;
 import io.github.pdkst.models.http.request.FormValue;
 import io.github.pdkst.models.http.request.HttpFormValues;
 import io.github.pdkst.models.http.request.HttpRequest;
@@ -48,7 +48,7 @@ public class OkHttp3HttpExchanger extends AbstractHttpExchanger {
     }
 
     @Override
-    public void doServerSideEvent(HttpRequest request, ServerSideEventListener listener) throws Exception {
+    public void doServerSideEvent(HttpRequest request, StreamEventListener listener) throws Exception {
         final Request rawRequest = buildRequest(request);
         EventSource.Factory factory = EventSources.createFactory(client);
         final Okhttp3EventListenerAdapter listenerAdapter

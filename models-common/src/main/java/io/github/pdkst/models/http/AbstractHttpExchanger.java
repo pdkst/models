@@ -1,6 +1,6 @@
 package io.github.pdkst.models.http;
 
-import io.github.pdkst.models.http.listener.ServerSideEventListener;
+import io.github.pdkst.models.http.listener.StreamEventListener;
 import io.github.pdkst.models.http.request.HttpRequest;
 
 import java.util.ArrayList;
@@ -21,13 +21,13 @@ public abstract class AbstractHttpExchanger implements HttpExchanger {
 
     protected abstract HttpResponse doExchange(HttpRequest request) throws Exception;
 
-    public void serverSideEvent(HttpRequest request, ServerSideEventListener listener) throws Exception {
+    public void serverSideEvent(HttpRequest request, StreamEventListener listener) throws Exception {
         final HttpRequest afterInterpretedRequest = intercept(request);
         doServerSideEvent(afterInterpretedRequest, listener);
     }
 
     protected abstract void doServerSideEvent(HttpRequest afterInterpretedRequest,
-                                              ServerSideEventListener listener) throws Exception;
+                                              StreamEventListener listener) throws Exception;
 
     private HttpRequest intercept(HttpRequest request) {
         for (Interceptor interceptor : interceptors) {

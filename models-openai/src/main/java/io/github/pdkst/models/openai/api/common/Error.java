@@ -1,4 +1,4 @@
-package io.github.pdkst.models.server.common;
+package io.github.pdkst.models.openai.api.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,11 +28,4 @@ public class Error {
      * param
      */
     private String param;
-
-    public Error(ErrorCode code) {
-        this.code = code.name();
-        this.message = code.getMessage();
-        this.type = code.getType();
-        this.param = null;
-    }
 }

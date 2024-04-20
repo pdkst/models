@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
  * @author pdkst
  * @since 2023/10/29
  */
-public interface ServerSideEventListener {
+public interface StreamEventListener {
     void onOpen(HttpResponse httpResponse);
 
     void onEvent(String id, String type, String data);

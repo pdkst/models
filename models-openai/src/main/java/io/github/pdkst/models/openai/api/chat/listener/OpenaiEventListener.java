@@ -1,7 +1,7 @@
 package io.github.pdkst.models.openai.api.chat.listener;
 
 import io.github.pdkst.models.http.HttpResponse;
-import io.github.pdkst.models.http.listener.ServerSideEventListener;
+import io.github.pdkst.models.http.listener.StreamEventListener;
 import io.github.pdkst.models.json.JacksonMapper;
 import io.github.pdkst.models.json.JsonMapper;
 import io.github.pdkst.models.openai.api.chat.response.CompletionChunkResponse;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
  */
 @Slf4j
 @RequiredArgsConstructor
-public class OpenaiEventListener implements ServerSideEventListener {
+public class OpenaiEventListener implements StreamEventListener {
     private final OpenaiEventReceiver receiver;
     private final JsonMapper jsonMapper;
 

@@ -2,6 +2,8 @@ package io.github.pdkst.models.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.IOException;
+
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;
 
@@ -33,7 +35,7 @@ public class JacksonMapper implements JsonMapper {
     }
 
     @Override
-    public <T> T parse(String json, Class<T> tClass) throws Exception {
+    public <T> T parse(String json, Class<T> tClass) throws IOException {
         return objectMapper.readValue(json, tClass);
     }
 }

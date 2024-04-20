@@ -2,7 +2,7 @@ package io.github.pdkst.models.openai.api.chat;
 
 import io.github.pdkst.models.http.HttpExchanger;
 import io.github.pdkst.models.http.HttpResponse;
-import io.github.pdkst.models.http.listener.ServerSideEventListener;
+import io.github.pdkst.models.http.listener.StreamEventListener;
 import io.github.pdkst.models.http.request.HttpRequest;
 import io.github.pdkst.models.openai.api.chat.request.CompletionRequest;
 import io.github.pdkst.models.openai.api.chat.response.CompletionResponse;
@@ -42,7 +42,7 @@ public class OpenaiChatCompletion {
      * @param listener listen the steam
      * @throws Exception errors
      */
-    public void completion(CompletionRequest request, ServerSideEventListener listener) throws Exception {
+    public void completion(CompletionRequest request, StreamEventListener listener) throws Exception {
         final HttpRequest post = HttpRequest.post("/chat/completions", request);
         exchanger.serverSideEvent(post, listener);
     }

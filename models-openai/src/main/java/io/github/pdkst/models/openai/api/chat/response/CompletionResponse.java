@@ -1,6 +1,7 @@
 package io.github.pdkst.models.openai.api.chat.response;
 
 import io.github.pdkst.models.common.Response;
+import io.github.pdkst.models.openai.api.common.Error;
 import io.github.pdkst.models.openai.api.common.Usage;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -49,5 +50,5 @@ public class CompletionResponse extends Response {
      */
     private String system_fingerprint;
 
-    private Object error;
+    private Error error;
 }

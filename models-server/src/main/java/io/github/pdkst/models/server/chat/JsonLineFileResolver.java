@@ -1,8 +1,8 @@
 package io.github.pdkst.models.server.chat;
 
+import io.github.pdkst.models.http.listener.StreamEventListener;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -40,17 +40,20 @@ public class JsonLineFileResolver implements Closeable {
 
 
     /**
-     * read stream and send line to emitter
+     * read stream and send line to listener
      */
-    public void resolve(SseEmitter emitter) throws IOException {
+    public void resolve(StreamEventListener listener) throws IOException {
         try {
+            listener.onOpen(null);
             String line;
             while ((line = reader.readLine()) != null) {
-                emitter.send(SseEmitter.event().data(line));
+                listener.onEvent(null, null, line);
                 log.info(line);
             }
+        } catch (Exception e) {
+            listener.onFailure(e, null);
         } finally {
-            emitter.complete();
+            listener.onClosed();
         }
     }
 
