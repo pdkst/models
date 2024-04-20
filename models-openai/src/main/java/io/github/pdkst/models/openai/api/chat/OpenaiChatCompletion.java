@@ -42,7 +42,7 @@ public class OpenaiChatCompletion {
      * @param listener listen the steam
      * @throws Exception errors
      */
-    public void stream(CompletionRequest request, ServerSideEventListener listener) throws Exception {
+    public void completion(CompletionRequest request, ServerSideEventListener listener) throws Exception {
         final HttpRequest post = HttpRequest.post("/chat/completions", request);
         exchanger.serverSideEvent(post, listener);
     }

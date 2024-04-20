@@ -2,6 +2,7 @@ package io.github.pdkst.models.openai.api.chat.listener;
 
 import io.github.pdkst.models.http.HttpResponse;
 import io.github.pdkst.models.http.listener.ServerSideEventListener;
+import io.github.pdkst.models.json.JacksonMapper;
 import io.github.pdkst.models.json.JsonMapper;
 import io.github.pdkst.models.openai.api.chat.response.CompletionChunkResponse;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,10 @@ import org.jetbrains.annotations.Nullable;
 public class OpenaiEventListener implements ServerSideEventListener {
     private final OpenaiEventReceiver receiver;
     private final JsonMapper jsonMapper;
+
+    public OpenaiEventListener(OpenaiEventReceiver receiver) {
+        this(receiver, new JacksonMapper());
+    }
 
     @Override
     public void onOpen(HttpResponse httpResponse) {
@@ -50,6 +55,7 @@ public class OpenaiEventListener implements ServerSideEventListener {
 
     @Override
     public void onFailure(@Nullable Throwable t, @Nullable HttpResponse httpResponse) {
+        log.error("OpenaiEventListener onFailure: ", t);
         receiver.onError(t, httpResponse.string());
     }
 }
