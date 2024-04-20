@@ -1,5 +1,6 @@
 package io.github.pdkst.models.openai.api.chat.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +26,7 @@ public class FunctionParameter {
     /**
      * 参数描述信息
      */
+    @JsonProperty("enum")
     private List<String> enums;
 
     public List<String> getEnum() {

@@ -22,7 +22,7 @@ public class FunctionParameters {
     /**
      * 参数列表
      */
-    private Map<String, FunctionParameter> properties;
+    private Map<String, ?> properties;
     /**
      * 必填参数
      */
