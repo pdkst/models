@@ -51,7 +51,12 @@ public class EmbeddingsRequest extends Request {
      */
     private String user;
 
-    public void setInput(String input) {
-        this.input = Collections.singletonList(input);
+    public void setInput(Object input) {
+        if (input instanceof String) {
+            String inputString = (String) input;
+            this.input = Collections.singletonList(inputString);
+        } else {
+            this.input = (List<String>) input;
+        }
     }
 }
