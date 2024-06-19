@@ -190,6 +190,27 @@ public class CompletionRequest extends Request {
      */
     private String user;
 
+    /**
+     * Options for streaming response. Only set this when you set stream: true.
+     */
+    private StreamOptions stream_options;
+
+    /**
+     * Whether to enable
+     * <a href="https://platform.openai.com/docs/guides/function-calling/parallel-function-calling">parallel function calling</a> during tool use.
+     */
+    private Boolean parallel_tool_calls;
+
+    /**
+     * Specifies the latency tier to use for processing the request. This parameter is relevant for customers subscribed to the scale tier service:
+     * <ul>
+     * <li>If set to 'auto', the system will utilize scale tier credits until they are exhausted.</li>
+     * <li>If set to 'default', the request will be processed in the shared cluster.</li>
+     * </ul>
+     * When this parameter is set, the response body will include the service_tier utilized.
+     */
+    private String service_tier;
+
     public void messages(Message... messages) {
         this.messages = Arrays.asList(messages);
     }
