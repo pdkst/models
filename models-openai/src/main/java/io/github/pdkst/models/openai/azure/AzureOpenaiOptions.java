@@ -75,12 +75,12 @@ public class AzureOpenaiOptions {
             throw new IllegalArgumentException("headerName must not be null");
         }
         if (keys.length == 1) {
-            final AzureOpenaiCredentials credentials = new AzureOpenaiCredentials(headerName, keys[0]);
+            final AzureOpenaiAuthorization credentials = new AzureOpenaiAuthorization(headerName, keys[0]);
             return new AzureSingletonEndpointSelector(urlBuilder, credentials);
         }
         final List<OpenaiEndpointSelector> selectors = new ArrayList<>();
         for (String key : keys) {
-            final AzureOpenaiCredentials credentials = new AzureOpenaiCredentials(headerName, key);
+            final AzureOpenaiAuthorization credentials = new AzureOpenaiAuthorization(headerName, key);
             final AzureSingletonEndpointSelector endpointSelector = new AzureSingletonEndpointSelector(urlBuilder,
                     credentials);
             selectors.add(endpointSelector);

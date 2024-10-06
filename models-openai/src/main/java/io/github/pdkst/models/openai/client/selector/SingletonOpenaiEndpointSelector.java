@@ -1,7 +1,7 @@
 package io.github.pdkst.models.openai.client.selector;
 
-import io.github.pdkst.models.http.Credentials;
-import io.github.pdkst.models.openai.client.OpenaiCredentials;
+import io.github.pdkst.models.http.Authorization;
+import io.github.pdkst.models.http.auth.BearerAuthorization;
 import io.github.pdkst.models.openai.client.OpenaiEndpoint;
 import io.github.pdkst.models.openai.client.OpenaiEndpointSelector;
 import io.github.pdkst.models.openai.client.OpenaiUrlBuilder;
@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public class SingletonOpenaiEndpointSelector implements OpenaiEndpointSelector {
-    private final Credentials credentials;
+    private final Authorization authorization;
     private final OpenaiUrlBuilder builder;
 
     public SingletonOpenaiEndpointSelector(String key) {
@@ -21,12 +21,12 @@ public class SingletonOpenaiEndpointSelector implements OpenaiEndpointSelector {
     }
 
     public SingletonOpenaiEndpointSelector(String key, OpenaiUrlBuilder urlBuilder) {
-        this(new OpenaiCredentials(key), urlBuilder);
+        this(BearerAuthorization.of(key), urlBuilder);
     }
 
     @Override
     public OpenaiEndpoint select(String api) {
         final String url = builder.build(api);
-        return new OpenaiEndpoint(url, credentials);
+        return new OpenaiEndpoint(url, authorization);
     }
 }

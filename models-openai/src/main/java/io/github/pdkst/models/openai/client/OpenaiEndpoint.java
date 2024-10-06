@@ -1,6 +1,6 @@
 package io.github.pdkst.models.openai.client;
 
-import io.github.pdkst.models.http.Credentials;
+import io.github.pdkst.models.http.Authorization;
 import lombok.Data;
 
 /**
@@ -16,5 +16,5 @@ public class OpenaiEndpoint {
     /**
      * api key
      */
-    private final Credentials credentials;
+    private final Authorization authorization;
 }
