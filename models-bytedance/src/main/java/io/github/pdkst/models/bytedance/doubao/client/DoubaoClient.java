@@ -2,6 +2,8 @@ package io.github.pdkst.models.bytedance.doubao.client;
 
 import com.volcengine.ApiClient;
 import com.volcengine.sign.Credentials;
+import io.github.pdkst.models.bytedance.doubao.api.chat.DoubaoChatCompletion;
+import io.github.pdkst.models.bytedance.doubao.api.embedding.DoubaoEmbeddings;
 import io.github.pdkst.models.http.HttpExchanger;
 import lombok.Getter;
 
@@ -36,4 +38,11 @@ public class DoubaoClient {
         return httpExchanger;
     }
 
+    public DoubaoChatCompletion chat() {
+        return new DoubaoChatCompletion(httpExchanger);
+    }
+
+    public DoubaoEmbeddings embeddings() {
+        return new DoubaoEmbeddings(httpExchanger);
+    }
 }

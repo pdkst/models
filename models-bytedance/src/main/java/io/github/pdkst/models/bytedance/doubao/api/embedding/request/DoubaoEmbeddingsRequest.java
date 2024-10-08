@@ -1,0 +1,52 @@
+package io.github.pdkst.models.bytedance.doubao.api.embedding.request;
+
+import io.github.pdkst.models.annotation.Required;
+import lombok.Data;
+
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * @author pdkst
+ * @since 2024/10/08
+ */
+@Data
+public class DoubaoEmbeddingsRequest {
+    /**
+     * Input text to embed, encoded as a string or array of tokens.
+     * To embed multiple inputs in a single request,
+     * pass an array of strings or array of token arrays.
+     * The input must not exceed the max input tokens for the model
+     * (8192 tokens for {@code text-embedding-ada-002}) and cannot be an empty string.
+     * <a href="https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken">Example Python code</a>
+     * for counting tokens.
+     * <p>string or array</p>
+     */
+    @Required
+    private List<String> input;
+
+    /**
+     * ID of the model to use. You can use the
+     * <a href="https://platform.openai.com/docs/api-reference/models/list">List models</a>
+     * API to see all of your available models,
+     * or see our <a href="https://platform.openai.com/docs/models/overview">Model overview</a>
+     * for descriptions of them.
+     */
+    @Required
+    private String model;
+
+    /**
+     * The format to return the embeddings in. Can be either {@code float} or {@code base64}.
+     * <p>Defaults to "float"</p>
+     */
+    private String encoding_format;
+
+    public void setInput(Object input) {
+        if (input instanceof String) {
+            String inputString = (String) input;
+            this.input = Collections.singletonList(inputString);
+        } else {
+            this.input = (List<String>) input;
+        }
+    }
+}

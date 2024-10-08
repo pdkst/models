@@ -22,7 +22,7 @@ import java.util.Map;
  */
 @Data
 @NoArgsConstructor
-public class CompletionRequest extends Request {
+public class DoubaoCompletionRequest extends Request {
     /**
      * 以 endpoint_id 索引对应的模型接入点。
      */

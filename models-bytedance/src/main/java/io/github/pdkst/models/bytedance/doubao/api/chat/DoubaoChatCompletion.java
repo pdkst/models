@@ -1,10 +1,10 @@
 package io.github.pdkst.models.bytedance.doubao.api.chat;
 
+import io.github.pdkst.models.bytedance.doubao.api.chat.request.DoubaoCompletionRequest;
 import io.github.pdkst.models.http.HttpExchanger;
 import io.github.pdkst.models.http.HttpResponse;
 import io.github.pdkst.models.http.listener.StreamEventListener;
 import io.github.pdkst.models.http.request.HttpRequest;
-import io.github.pdkst.models.openai.api.chat.request.CompletionRequest;
 import io.github.pdkst.models.openai.api.chat.response.CompletionResponse;
 import lombok.RequiredArgsConstructor;
 
@@ -29,7 +29,7 @@ public class DoubaoChatCompletion {
      * @return completion
      * @throws Exception errors
      */
-    public CompletionResponse completion(CompletionRequest request) throws Exception {
+    public CompletionResponse completion(DoubaoCompletionRequest request) throws Exception {
         HttpRequest post = HttpRequest.post("/chat/completions", request);
         final HttpResponse response = exchanger.exchange(post);
         return response.body(CompletionResponse.class);
@@ -42,7 +42,7 @@ public class DoubaoChatCompletion {
      * @param listener listen the steam
      * @throws Exception errors
      */
-    public void completion(CompletionRequest request, StreamEventListener listener) throws Exception {
+    public void completion(DoubaoCompletionRequest request, StreamEventListener listener) throws Exception {
         final HttpRequest post = HttpRequest.post("/chat/completions", request);
         exchanger.serverSideEvent(post, listener);
     }
